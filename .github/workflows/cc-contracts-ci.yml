@@ -48,7 +48,7 @@ jobs:
       - name: Get version
         id: version
         run: |
-          $version = "1.0.$(git rev-list --count HEAD)"
+          $version = "1.0.${{ github.run_number }}"
           echo "::set-output name=version::$version"
     
   display-version:
@@ -92,7 +92,7 @@ jobs:
                    
       - name: Nuget - Pack
         working-directory: tooling/Contracts
-        run: dotnet pack --configuration Release
+        run: dotnet pack --configuration Release /p:PackageVersion=${{ needs.define-version.outputs.version }}
 
       - name: Nuget - Push
         working-directory: tooling/Contracts
