@@ -33,13 +33,11 @@ jobs:
       - name: Dump context
         env:
           DUMP: ${{ toJSON(github) }}
-        run: Write-Output $Env:DUMP
-
- 
-  
+        run: Write-Output $Env:DUMP  
   
   define-version:
     name: Define Version
+    needs: dump-context
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.version }}
@@ -59,7 +57,7 @@ jobs:
     steps:
       - name: Display Version
         run: |
-          echo "Version: ${{ needs.define-version.outputs.version }}"
+          echo "Version: ${{ needs.define-version.outputs.version }}"  
 
   publish-nuget-package:
     name: Publish Nuget Package
@@ -81,7 +79,12 @@ jobs:
           echo "ABS_NUGET_USERNAME=$AbsNugetUsername" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
 
           $AbsNugetPassword = "${{ github.TOKEN }}"
-          echo "ABS_NUGET_PASSWORD=$AbsNugetPassword" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append                   
+          echo "ABS_NUGET_PASSWORD=$AbsNugetPassword" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append     
+          
+      - name: Build
+        run: |
+          dotnet restore
+          dotnet build --configuration Release
                    
       - name: Nuget - Pack
         working-directory: tooling/Contracts
