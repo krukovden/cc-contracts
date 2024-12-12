@@ -88,7 +88,7 @@ jobs:
       - name: Build
         working-directory: tooling
         run: |          
-          dotnet build Contracts.sln --configuration Release
+          dotnet build Contracts.sln --configuration Release --no-restore
                    
       - name: Nuget - Pack
         working-directory: tooling/Contracts
