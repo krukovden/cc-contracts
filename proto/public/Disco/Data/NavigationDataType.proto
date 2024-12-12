@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Data.Navigation;
+
+enum NavigationDataType
+{
+  Unknown = 0;
+  Anchorage = 1;
+  Distance = 2;
+  Propulsion = 3;
+  Heading = 4;
+  SpeedOverGround = 5;
+  SpeedOverWater = 6;
+}
+
+message NavigationDataTypeCollection
+{
+  repeated NavigationDataType dataType = 1; // Empty interpreted as "all"
+}

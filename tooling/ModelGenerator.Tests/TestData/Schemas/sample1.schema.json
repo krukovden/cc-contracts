@@ -1,0 +1,16 @@
+{
+  "$id": "https://eagle.org/sample.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SampleOneClass",
+  "type": "object",
+  "properties": {
+    "propertyOne": {
+      "type": "string",
+      "description": "Property one"
+    },
+    "propertyTwo": {
+      "type": "string",
+      "description": "Property two"
+    }
+  }
+}

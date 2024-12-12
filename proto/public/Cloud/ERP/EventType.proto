@@ -1,0 +1,28 @@
+// Schema: EventType
+// Business Object: EventType
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+
+// ADDED 1.0.0.0
+message EventType
+{
+    // ADDED 1.0.0.0
+    enum Enum
+    {
+        Unknown = 0;
+        Arrival = 1;
+        Departure = 2;
+        Noon = 3;
+        StsOpl = 4;
+    }
+    
+    // ADDED 1.0.0.0
+    optional Enum value = 1;
+
+    // ADDED 1.0.0.0
+    optional string originalValue = 2;
+}

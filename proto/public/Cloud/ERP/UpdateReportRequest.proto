@@ -1,0 +1,43 @@
+// Schema: UpdateReportRequest
+// Business Object: UpdateReportRequest
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Cloud/ERP/Voyage.proto";
+import "public/Cloud/ERP/BunkerDeliveryNote.proto";
+import "public/Cloud/ERP/OtherFuel.proto";
+import "public/Cloud/ERP/DateRange.proto";
+
+// ADDED 1.0.0.0
+message UpdateReportRequest
+{
+  // ADDED 1.0.0.0
+  optional int32 reportId = 1;
+
+  // ADDED 1.0.0.0
+  optional int32 reportYear = 2;
+
+  // ADDED 1.0.0.0
+  optional DateRange dateRange = 3;
+
+  // ADDED 1.0.0.0
+  repeated Voyage voyages = 4;
+
+  // ADDED 1.0.0.0
+  repeated BunkerDeliveryNote bunkerDeliveryNotes = 5;
+
+  // ADDED 1.0.0.0
+  repeated OtherFuel otherFuelDetails = 6;
+
+  // ADDED 1.0.0.0
+  optional string wcn = 7;
+
+    // ADDED 1.0.0.0
+  optional string vesselImo = 8;
+
+    // ADDED 1.0.0.0
+  optional string vesselName = 9;
+}

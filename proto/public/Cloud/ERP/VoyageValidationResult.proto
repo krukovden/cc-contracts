@@ -1,0 +1,20 @@
+// Schema: VoyageValidationResult
+// Business Object: VoyageValidationResult
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Cloud/ERP/Voyage.proto";
+import "public/Cloud/ERP/ValidationResult.proto";
+
+// ADDED 1.0.0.0
+message VoyageValidationResult
+{
+  // ADDED 1.0.0.0
+  optional Voyage voyage = 1;
+
+  // ADDED 1.0.0.0
+  optional ValidationResult validationResult = 2;
+}

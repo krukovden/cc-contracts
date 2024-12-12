@@ -1,0 +1,127 @@
+{
+  "$id": "https://eagle.org/cc-drex-site-config.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DrexSiteConfig",
+  "type": "object",
+  "required": [ "key", "maxFileTransferTimeoutSeconds" ],
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "Unique key for the site"
+    },
+    "remoteBuses": {
+      "title": "BusConnection",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/busConnection"
+      }
+    },
+    "messageHeaders": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "remoteSftpServers": {
+      "title": "SftpConnection",
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "$ref": "#/$defs/sftpConnection"
+      }
+    },
+    "fileTransportChannelDestinationMappings": {
+      "title": "FileTransportChannelDestinationMapping",
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "$ref": "#/$defs/fileTransportChannelDestinationMapping"
+      }
+    },
+    "maxFileTransferTimeoutSeconds": {
+      "type": "integer",
+      "description": "Maximum time in seconds to allow files to be waiting to be transferred"
+    }
+  },
+  "$defs": {
+    "busConnection": {
+      "title": "BusConnection",
+      "type": "object",
+      "required": [ "key", "type", "host", "port", "protocol" ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "Unique key for the destination for messages shipped from this site, must appear in either the 'cc.destination' or 'cc.origin' header",
+          "enum": [ "unknown", "local", "central" ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [ "unknown", "rabbitmq" ]
+        },
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        },
+        "httpPort": {
+          "type": "integer"
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [ "unknown", "amqp", "amqps" ]
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "vHost": {
+          "type": "string"
+        }
+      }
+    },
+    "sftpConnection": {
+      "title": "SftpConnection",
+      "type": "object",
+      "required": ["key", "host", "port", "protocol", "username", "password"],
+      "properties": {
+        "key": {
+          "type": "string",
+          "enum": [ "unknown", "central" ]
+        },
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [ "unknown", "sftp" ]
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "fileTransportChannelDestinationMapping": {
+      "title": "FileTransportChannelDestinationMapping",
+      "type": "object",
+      "required": [],
+      "properties": {
+        "fileTransportDestination": {
+          "type": "string",
+          "enum": [ "unknown", "central" ]
+        },
+        "fileTransportChannel": {
+          "type": "string",
+          "enum": [ "unknown", "sftp" ]
+        }
+      }
+    }
+  }
+}

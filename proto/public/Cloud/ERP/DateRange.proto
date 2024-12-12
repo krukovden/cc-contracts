@@ -1,0 +1,19 @@
+// Schema: DateRange
+// Business Object: DateRange
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "google/protobuf/timestamp.proto";
+
+// ADDED 1.0.0.0
+message DateRange
+{
+  // ADDED 1.0.0.0
+  optional google.protobuf.Timestamp start = 1;
+
+  // ADDED 1.0.0.0
+  optional google.protobuf.Timestamp end = 2;
+}

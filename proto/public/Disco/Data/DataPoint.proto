@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Data;
+
+import "google/protobuf/timestamp.proto";
+import "public/Disco/Data/LocationDataType.proto";
+import "public/Disco/Data/WeatherDataType.proto";
+import "public/Disco/Data/DraftDataType.proto";
+import "public/Disco/Data/FuelDataType.proto";
+import "public/Disco/Data/NavigationDataType.proto";
+import "public/Disco/Data/EngineDataType.proto";
+
+enum Unit
+{
+  Unknown = 0;
+  Bar = 100;
+  CubicMetersPerHour = 200;
+  Degrees = 300;
+  DegreesCelsius = 400;
+  DegreesPerSecond = 500;
+  GramsPerKilowattHour = 600;
+  Hours = 700;
+  KilogramsPerHour = 800;
+  Kilonewtons = 900;
+  KilovoltAmpere = 1000;
+  KilovoltAmpereReactive = 1100;
+  Kilowatts = 1200;
+  Meters = 1300;
+  MetersPerSecond = 1400;
+  MetersPerSecondSquared = 1500;
+  MetricTons = 1600;
+  MetricTonsPerHour = 1700;
+  MillimetersPerSecond = 1800;
+  NewtonMeter = 1900;
+  OnePerMinute = 2000;
+  PartsPerMillion = 2100;
+  PartsPerMillionPerPercent = 2200;
+  Percent = 2300;
+  PotentialOfHydrogen = 2400;
+  RevolutionsPerMinute = 2500;
+  Tons = 2600;
+  Knots = 2700;
+}
+
+message DataPoint
+{
+  google.protobuf.Timestamp timestamp = 1;
+  double value = 2;
+  optional Unit unit = 3;
+}
+
+message DataPointCollection
+{
+  oneof dataType
+  {
+    Abs.CommonCore.Contracts.Proto.Disco.Data.Location.LocationDataType locationDataType = 1001;
+    Abs.CommonCore.Contracts.Proto.Disco.Data.Weather.WeatherDataType weatherDataType = 1002;
+    Abs.CommonCore.Contracts.Proto.Disco.Data.Draft.DraftDataType draftDataType = 1003;
+    Abs.CommonCore.Contracts.Proto.Disco.Data.Fuel.FuelDataType fuelDataType = 1004;
+    Abs.CommonCore.Contracts.Proto.Disco.Data.Navigation.NavigationDataType navigationDataType = 1005;
+	Abs.CommonCore.Contracts.Proto.Disco.Data.Engine.EngineDataType engineDataType = 1006;
+  }
+  repeated Abs.CommonCore.Contracts.Proto.Disco.Data.DataPoint dataPoints = 2001;
+}

@@ -1,0 +1,74 @@
+{
+  "$id": "https://eagle.org/cc-drex-client-config.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DrexClientAppConfig",
+  "type": "object",
+  "required": [ "key" ],
+  "properties": {
+    "key": {
+      "description": "The unique key for identifying the client app. Will be used for observability purposes.",
+      "type": "string"
+    },
+    "siteSources": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "$ref": "#/$defs/busResource"
+      }
+    },
+    "siteSinks": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "$ref": "#/$defs/busResource"
+      }
+    },
+    "remoteSources": {
+      "description": "List of lists of remote sources, keyed by destination (e.g. 'central')",
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/busResource"
+        }
+      }
+    },
+    "remoteSinks": {
+      "description": "List of lists remote sinks, keyed by destination (e.g. 'central')",
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/$defs/busResource"
+        }
+      }
+    },
+    "messageHeaders": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "busResource": {
+      "title": "BusResource",
+      "type": "object",
+      "required": [ "type", "name" ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "unknown",
+            "queue",
+            "exchange-direct",
+            "exchange-topic",
+            "exchange-fanout",
+            "exchange-headers"
+          ]
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+// Schema: ErpImportReportRequest
+// Business Object: ErpImportReportRequest
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Cloud/ERP/ImportReportRequest.proto";
+import "google/protobuf/timestamp.proto";
+
+// ADDED 1.0.0.0
+message ErpImportReportRequest
+{
+  /// ADDED 1.0.0.0
+  optional google.protobuf.Timestamp timestamp = 1;
+
+  // ADDED 1.0.0.0
+  repeated ImportReportRequest requests = 2;
+}

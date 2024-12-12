@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Drex.ConfigError;
+
+message Error
+{
+  // Version of the config error message
+  string version = 1;
+  
+  string Filename = 2;
+  ErrorCode code = 3;
+  optional string message = 4;
+}
+
+enum ErrorCode
+{
+  UNKNOWN = 0;
+  INVALID_CONFIG = 1;
+  CONFIG_DELETED = 2;
+  QUEUE_DELETED = 3;
+}

@@ -1,0 +1,31 @@
+// Schema: GetReportSOFResponse
+// Business Object: GetReportSOFResponse
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Error.proto";
+
+// ADDED 1.0.0.0
+message GetReportSOFResponse
+{
+  // ADDED 1.0.0.0
+  optional string status = 1;
+
+  // ADDED 1.0.0.0
+  optional string correlationId = 2;
+
+  // ADDED 1.0.0.0
+  optional int32 reportId = 3;
+  
+  // ADDED 1.0.0.0
+  repeated string voyageIds = 4;
+
+  // ADDED 1.0.0.0
+  optional string filePath = 5;
+
+  // ADDED 1.0.0.0
+  optional Error error = 6;
+}

@@ -1,0 +1,20 @@
+// Schema: Paging
+// Business Object: Paging
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Shared;
+
+// ADDED 1.0.0.0
+message Paging
+{
+	// ADDED 1.0.0.0
+	optional int32 totalCount = 1;
+	
+	// ADDED 1.0.0.0
+	optional int32 pageSize = 2;
+	
+	// ADDED 1.0.0.0
+	optional int32 pageNumber = 3;
+}

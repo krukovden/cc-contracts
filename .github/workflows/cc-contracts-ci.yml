@@ -1,0 +1,94 @@
+name: CC Contracts CI
+
+on:
+  push:
+    branches: [ "main", "releases/**" ]
+    paths:
+      - 'json/**/*'
+      - 'proto/**/*'
+      - 'tooling/**/*'
+      - '.github/workflows/cc-contracts-ci.yml'
+  pull_request:
+    branches: [ "main", "releases/**" ]
+    paths:
+      - 'json/**/*'
+      - 'proto/**/*'
+      - 'tooling/**/*'
+      - '.github/workflows/cc-contracts-ci.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: cc-contracts-ci-${{ github.head_ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  dump-context:
+    name: Dump Context
+    uses: abs-wavesight/cc-platform/.github/workflows/shared-dump-context.yml@main
+
+  build:
+    name: Build & Run Tests
+    uses: abs-wavesight/cc-platform/.github/workflows/shared-dotnet-build.yml@main
+    with:
+      solution-directory: tooling
+      solution-name: Contracts.sln
+      check-code-formatting: true
+    secrets: inherit
+  
+  define-version:
+    needs: build     
+    uses: abs-wavesight/cc-platform/.github/workflows/shared-define-version.yml@main
+    with:
+      major: 1
+      minor: 1
+      release_branch: "releases/1_1_1" 
+      develop_branch: "main"    
+    
+  display-version:
+    needs: define-version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Version
+        run: |
+          echo "Version: ${{ needs.define-version.outputs.version }}"
+
+  publish-nuget-package:
+    name: Publish Nuget Package
+    needs: [define-version]
+    uses: abs-wavesight/cc-platform/.github/workflows/shared-publish-nuget-package.yml@main
+    with:
+      solution-directory: tooling
+      nuget-working-directory: tooling/Contracts
+      nuget-package-name: Abs.CommonCore.Contracts
+      project-file: Contracts/Contracts.csproj
+      version: ${{ needs.define-version.outputs.version }}
+    secrets: inherit
+
+  build-release:
+    name: Zip Artifacts
+    needs: publish-nuget-package
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/heads/releases/')
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+
+      - name: Zip Artifacts
+        run: |
+          $zipFile = "Contracts.zip"
+          Compress-Archive -Path .\json, .\proto\public -DestinationPath $zipFile -Force
+          Write-Host "##vso[artifact.upload containerfolder=cc-contracts-ci;artifactname=cc-contracts-ci;]$zipFile"
+
+      - name: Build release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          body: "----"
+          name: ${{ needs.publish-nuget-package.outputs.nuget-version }} Contracts
+          tag: ${{ needs.publish-nuget-package.outputs.nuget-version }}-contracts
+          commit: main
+          artifacts: "Contracts.zip"

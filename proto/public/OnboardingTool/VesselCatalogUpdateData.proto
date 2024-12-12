@@ -1,0 +1,31 @@
+﻿// Schema: VesselCatalogUpdateData file
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.OnboardingTool;
+
+// ADDED 1.0.0.0
+message GroupingType
+{
+    optional Enum value = 1;
+
+    enum Enum {
+        Industry = 0;
+        Organization = 1;
+    }
+}
+
+// ADDED 1.0.0.0
+message VesselCatalogUpdateData {
+    // ADDED 1.0.0.0
+    optional GroupingType GroupingType= 1;
+    // ADDED 1.0.0.0
+    optional int32 GroupingOrder = 2;
+    // ADDED 1.0.0.0,
+    optional string GroupingDescription = 3;
+    // ADDED 1.0.0.0,
+	optional string GroupingCategoryName = 4;
+    // ADDED 1.0.0.0,
+	optional string GroupingName = 5;
+}

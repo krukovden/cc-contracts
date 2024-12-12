@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Waypoints.Ecdis;
+
+import "google/protobuf/timestamp.proto";
+import "public/Cloud/Waypoints/ECDIS/WaypointsFileStatus.proto";
+
+message AuditRecord
+{
+    optional string tenantId = 1;
+    optional string partnerName = 2;
+    optional string clientTenantId = 3;
+    optional string fileName = 4;
+    optional string originalFileUrl = 5;
+    optional string permanentFileUrl = 6;
+    optional google.protobuf.Timestamp fileReceivedDateTime = 7;
+    optional ProcessingStatus fileProcessingStatus = 8;
+    optional ErrorReport errorReport = 9;
+}

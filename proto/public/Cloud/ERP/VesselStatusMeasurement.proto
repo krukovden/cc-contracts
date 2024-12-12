@@ -1,0 +1,19 @@
+// Schema: VesselStatusMeasurement
+// Business Object: VesselStatusMeasurement
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Cloud/ERP/VesselStatus.proto";
+
+// ADDED 1.0.0.0
+message VesselStatusMeasurement
+{
+  // ADDED 1.0.0.0
+  optional VesselStatus type = 1;
+
+  // ADDED 1.0.0.0
+  optional double quantity = 2;
+}

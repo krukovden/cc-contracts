@@ -1,0 +1,23 @@
+﻿// Schema: Vessel Data Action file
+// Business Object: VesselDataAction
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.OnboardingTool;
+
+// ADDED 1.0.0.0
+message VesselDataAction {
+	// ADDED 1.0.0.0
+	enum Enum {
+		// ADDED 1.0.0.0
+		UNKNOWN = 0;
+		// ADDED 1.0.0.0
+		UPLOAD = 1;
+		// ADDED 1.0.0.0
+		UPDATE = 2;
+	}
+
+	// ADDED 1.0.0.0
+	optional Enum value = 1;
+}

@@ -1,0 +1,28 @@
+// Schema: CargoUnit
+// Business Object: CargoUnit
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+
+// ADDED 1.0.0.0
+message CargoUnit
+{
+    // ADDED 1.0.0.0
+    enum Enum
+    {
+        Unknown = 0;
+        MetricTonnes = 1;
+        CubicMeters = 2;
+        Deadweight = 3;
+        Pax = 4;
+    }
+    
+    // ADDED 1.0.0.0
+    optional Enum value = 1;
+
+    // ADDED 1.0.0.0
+    optional string originalValue = 2;
+}

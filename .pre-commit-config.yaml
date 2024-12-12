@@ -1,0 +1,16 @@
+repos:
+-   repo: local
+    hooks:
+    -   id: generate-protobuf-contracts
+        name: generate-protobuf-contracts
+        language: system 
+        entry: powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "tooling/Contracts/generate-proto.ps1"
+    -   id: generate-json-contracts
+        name: generate-json-contracts
+        language: system 
+        entry: powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "tooling/Contracts/generate-json.ps1"
+    -   id: dotnet-format-contracts
+        name: dotnet-format
+        language: system 
+        entry: dotnet format --no-restore --severity info --verbosity normal tooling/Contracts.sln --include 
+        types_or: ["c#"]

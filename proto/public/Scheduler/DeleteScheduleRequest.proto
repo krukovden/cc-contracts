@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Scheduler;
+
+message DeleteScheduleRequest
+{
+  optional string scheduleId = 1;
+}

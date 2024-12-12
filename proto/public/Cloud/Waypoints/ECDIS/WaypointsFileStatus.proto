@@ -1,0 +1,103 @@
+// Schema: WaypointsFileStatus
+// Business Object: WaypointsFileStatus, ErrorReport, Error, ProcessingStatus
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Waypoints.Ecdis;
+
+import "google/protobuf/timestamp.proto";
+
+// ADDED 1.0.0.0
+message WaypointsFileStatus
+{
+    // ADDED 1.0.0.0
+    optional string clientTenantId = 1;
+    
+    // ADDED 1.0.0.0
+    optional string partnerName = 2;
+    
+    // ADDED 1.0.0.0
+    optional string fileName = 3;
+    
+    // ADDED 1.0.0.0
+    optional string fileUrl = 4;
+    
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp fileReceivedDateTime = 5;
+    
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp fileProcessingAttemptedDateTime = 6;
+    
+    // ADDED 1.0.0.0
+    optional ProcessingStatus fileProcessingStatus = 7;
+    
+    // ADDED 1.0.0.0
+    map<string, string> fileMetadata = 8;
+    
+    // ADDED 1.0.0.0
+    optional ErrorReport errorReport = 9;
+    
+    // ADDED 1.0.0.0
+    optional string ccTenantId = 10;
+}
+
+// ADDED 1.0.0.0
+message ErrorReport
+{
+  // ADDED 1.0.0.0
+  optional ErrorCategory category = 1;
+  
+  // ADDED 1.0.0.0
+  optional string message = 2;
+  
+  // ADDED 1.0.0.0
+  repeated Error errors = 3;
+  
+  // ADDED 1.0.0.0
+  enum ErrorCategory
+  {
+      Unknown = 0;
+      Parsing = 1;	  
+	  Validation = 2;
+	  Download = 3;
+	  Internal = 4;
+  }
+}
+
+// ADDED 1.0.0.0
+message Error
+{
+    // ADDED 1.0.0.0
+    optional ErrorCode code = 1;
+
+    // ADDED 1.0.0.0
+    optional string message = 2;
+
+    // ADDED 1.0.0.0
+    optional string locator = 3;
+	
+    // ADDED 1.0.0.0
+    enum ErrorCode
+    {
+        Unknown = 0;
+        DownloadingError = 1;
+        ParsingError = 2;
+        InternalError = 3;
+    }
+}
+
+// ADDED 1.0.0.0
+message ProcessingStatus
+{
+    // ADDED 1.0.0.0
+    enum Enum
+    {
+        Unknown = 0;
+        Success = 1;
+        Failed = 2;
+    }
+
+    // ADDED 1.0.0.0
+    optional Enum value = 1;
+}

@@ -1,0 +1,19 @@
+// Schema: GetVoyagesRequest
+// Business Object: GetVoyagesRequest
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Cloud/ERP/DateRange.proto";
+
+// ADDED 1.0.0.0
+message GetVoyagesRequest
+{
+  // ADDED 1.0.0.0
+  optional int32 reportId = 1;
+
+  // ADDED 1.0.0.0
+  optional DateRange dateRange = 2;
+}

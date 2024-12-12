@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "default": {},
+  "title": "InstallerComponentDownloaderConfig",
+  "required": [
+    "components"
+  ],
+  "properties": {
+    "components": {
+      "type": "array",
+      "default": [],
+      "title": "The components to download",
+      "items": {
+        "type": "string"
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "title": "The parameters to use to override the configuration",
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

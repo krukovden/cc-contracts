@@ -1,0 +1,47 @@
+﻿// Schema: Vessel file
+// Business Object: VesselDataProcessing, PartnerApiIntegration, PartnerResponse
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.OnboardingTool;
+
+import "public/OnboardingTool/VesselDataAction.proto";
+import "google/protobuf/timestamp.proto";
+import "public/Cloud/Shared/Vessel.proto";
+import "public/Error.proto";
+
+// ADDED 1.0.0.0
+message VesselDataProcessing {
+    // ADDED 1.0.0.0
+    optional string originalUrl = 1;
+    // ADDED 1.0.0.0
+    optional VesselDataAction action = 2;
+    // ADDED 1.0.0.0
+    optional string parsedData = 3;
+    // ADDED 1.0.0.0
+    optional string configData = 4;
+    // ADDED 1.0.0.0
+    optional ErrorResponse error = 5;
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp fileReceivedDateTime = 6;
+}
+
+// ADDED 1.0.0.0
+message PartnerApiIntegration {
+    // ADDED 1.0.0.0
+    optional PartnerResponse partnerResponse = 1;
+    // ADDED 1.0.0.0
+    optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.Vessel vessel = 2;
+    // ADDED 1.0.0.0
+    optional VesselDataProcessing vesselDataProcessing = 3;
+    // ADDED 1.0.0.0
+    optional ErrorResponse error = 4; 
+}
+
+message PartnerResponse {
+    // ADDED 1.0.0.0
+    optional int32 statusCode = 1;
+    // ADDED 1.0.0.0
+    optional string statusMessage = 2;
+}

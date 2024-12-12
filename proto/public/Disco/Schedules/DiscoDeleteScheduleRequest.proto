@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Schedules;
+
+message DiscoDeleteScheduleRequest
+{
+  optional string requestId = 1; // Client-generated, for internal tracking purposes
+  string scheduleId = 2; // Schedule Id to delete
+}

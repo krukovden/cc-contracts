@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco;
+
+enum Destination
+{
+  Unknown = 0;
+  Local	= 1;
+  Remote = 2;
+}

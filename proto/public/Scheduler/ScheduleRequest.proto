@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Scheduler;
+
+import "public/Scheduler/DeleteScheduleRequest.proto";
+import "public/Scheduler/CreateScheduleRequest.proto";
+
+message ScheduleRequest
+{
+    oneof request
+    {
+        Abs.CommonCore.Contracts.Proto.Scheduler.CreateScheduleRequest createScheduleRequest = 1001;
+        Abs.CommonCore.Contracts.Proto.Scheduler.DeleteScheduleRequest deleteScheduleRequest = 1002;
+    }
+}

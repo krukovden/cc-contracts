@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Schedules;
+
+import "google/protobuf/timestamp.proto";
+import "public/Error.proto";
+
+message DiscoScheduleResponse
+{
+  optional string requestId = 1;
+  string scheduleId = 2;
+  google.protobuf.Timestamp executed = 3;
+  optional Abs.CommonCore.Contracts.Proto.Error error = 4;
+}

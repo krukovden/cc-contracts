@@ -1,0 +1,131 @@
+// Schema: Tenant
+// Business Object: ClientInfo, Tenant, Partners, VesonInformation, EcdisInformation, KongsbergInformation, TenantResponse
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Tenant;
+
+import "google/protobuf/timestamp.proto";
+import "public/Cloud/Shared/Vessel.proto";
+import "public/Cloud/Shared/Paging.proto";
+
+// ADDED 1.0.0.0
+message ClientInfo {
+    // ADDED 1.0.0.0
+    optional string clientName = 1;
+
+    // ADDED 1.0.0.0
+    optional string clientId = 2;
+
+    // ADDED 1.0.0.0
+    repeated string queueNames = 3;
+    
+	// ADDED 1.0.0.0
+    repeated Tenant tenants = 7;
+}
+
+// ADDED 1.0.0.0
+message Tenant {
+    // ADDED 1.0.0.0
+    optional string ccTenantId = 1;
+
+    // ADDED 1.0.0.0
+    optional string clientTenantId = 2;
+
+    // ADDED 1.0.0.0
+    optional string tenantName = 3;
+
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp createdDateTime = 4;
+
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp updatedDateTime = 5;
+
+    // ADDED 1.0.0.0
+    optional Partners partners = 6;
+
+    // ADDED 1.0.0.0
+    repeated Abs.CommonCore.Contracts.Proto.Cloud.Shared.Vessel vessels = 7;
+
+    // ADDED 1.0.0.0
+    optional string clientId = 8;
+}
+
+// ADDED 1.0.0.0
+message Partners {
+    // ADDED 1.0.0.0
+    optional VesonInformation vesonInformation = 1;
+
+    // ADDED 1.0.0.0
+    optional EcdisInformation ecdisInformation = 2;
+
+    // ADDED 1.0.0.0
+    optional KongsbergInformation kongsbergInformation = 3;
+
+    // ADDED 1.0.0.0
+    optional ERPInformation erpInformation = 4;
+}
+
+// ADDED 1.0.0.0
+message VesonInformation {
+    // ADDED 1.0.0.0
+    optional string vesonInternalId = 1;
+
+    // ADDED 1.0.0.0
+    optional string vesonToken = 2;
+
+    // ADDED 1.0.0.0
+    repeated string queueNames = 3;
+}
+
+// ADDED 1.0.0.0
+message EcdisInformation {
+    // ADDED 1.0.0.0
+    optional bool createResources = 1;
+
+    // ADDED 1.0.0.0
+    optional string connectionString = 2;
+
+    // ADDED 1.0.0.0
+    repeated string queueNames = 3;
+}
+
+// ADDED 1.0.0.0
+message ERPInformation {
+    // ADDED 1.0.0.0
+    repeated ErpVesselAssignment vesselAssignment = 1;
+
+    // ADDED 1.0.0.0
+    repeated string queueNames = 2;
+
+    // ADDED 1.0.0.0
+    repeated string exchangeNames = 3;
+}
+
+// ADDED 1.0.0.0
+message KongsbergInformation {
+}
+
+// ADDED 1.0.0.0
+message TenantResponse {
+    // ADDED 1.0.0.0
+    repeated Tenant tenants = 1;
+
+    // ADDED 1.0.0.0
+    optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.Paging paging = 2;
+}
+
+message ErpVesselAssignment {
+    // ADDED 1.0.0.0
+    optional string subdivisionName = 1;
+
+    // ADDED 1.0.0.0
+    optional string wcn = 2;
+
+    // ADDED 1.0.0.0
+    optional string accessToken = 3;
+
+    // ADDED 1.0.0.0
+    optional string vesselImo = 4; //validate through assigned vessels
+}

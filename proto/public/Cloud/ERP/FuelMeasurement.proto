@@ -1,0 +1,19 @@
+// Schema: FuelMeasurement
+// Business Object: FuelMeasurement
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Cloud/ERP/FuelType.proto";
+
+// ADDED 1.0.0.0
+message FuelMeasurement
+{
+  // ADDED 1.0.0.0
+  optional FuelType type = 1;
+
+  // ADDED 1.0.0.0
+  optional double quantity = 2;
+}

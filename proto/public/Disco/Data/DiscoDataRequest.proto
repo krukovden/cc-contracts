@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Data;
+
+import "public/Disco/Destination.proto";
+import "public/Disco/Data/OnDemandSingle.proto";
+import "public/Disco/Data/OnDemandRange.proto";
+import "public/Disco/Data/DraftDataType.proto";
+import "public/Disco/Data/LocationDataType.proto";
+import "public/Disco/Data/FuelDataType.proto";
+import "public/Disco/Data/WeatherDataType.proto";
+import "public/Disco/Data/NavigationDataType.proto";
+import "public/Disco/Data/EngineDataType.proto";
+
+message DiscoDataRequest
+{
+  string version = 1; // Version of the data request message
+  optional string requestId = 2; // Client-generated, for internal tracking purposes
+  optional Abs.CommonCore.Contracts.Proto.Disco.Destination destination = 3;
+  oneof trigger
+  {
+    Abs.CommonCore.Contracts.Proto.Disco.Data.OnDemandSingle onDemandSingle = 1001;
+    Abs.CommonCore.Contracts.Proto.Disco.Data.OnDemandRange onDemandRange = 1002;
+  }
+  oneof dataRequest
+  {
+    Abs.CommonCore.Contracts.Proto.Disco.Data.Draft.DraftDataTypeCollection draftDataTypes = 2001;
+    Abs.CommonCore.Contracts.Proto.Disco.Data.Location.LocationDataTypeCollection locationDataTypes = 2002;
+    Abs.CommonCore.Contracts.Proto.Disco.Data.Fuel.FuelDataTypeCollection fuelDataTypes = 2003;
+    Abs.CommonCore.Contracts.Proto.Disco.Data.Weather.WeatherDataTypeCollection weatherDataTypes = 2004;
+    Abs.CommonCore.Contracts.Proto.Disco.Data.Navigation.NavigationDataTypeCollection navigationDataTypes = 2005;
+	Abs.CommonCore.Contracts.Proto.Disco.Data.Engine.EngineDataTypeCollection engineDataTypes = 2006;
+  }
+}

@@ -1,0 +1,63 @@
+// Schema: Port
+// Business Object: PortSourceType, CustomPort, CreateCustomPortRequest
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Tenant;
+
+import "google/protobuf/timestamp.proto";
+import "public/Cloud/Port/Port.proto";
+import "public/Cloud/Shared/Paging.proto";
+
+// ADDED 1.0.0.0
+message PortSourceType
+{
+    optional Enum value = 1;
+
+    enum Enum
+    {
+        UNKNOWN = 0;
+        ORPHAN  = 1;
+        UNECE   = 2;
+    }
+}
+
+// ADDED 1.0.0.0
+message CustomPort
+{
+    // ADDED 1.0.0.0
+    optional string tenantId = 1;
+    // ADDED 1.0.0.0
+    optional string code = 2;
+    // ADDED 1.0.0.0
+    optional string name = 3;
+    // ADDED 1.0.0.0
+    optional Abs.CommonCore.Contracts.Proto.Cloud.Port.UnecePort port = 4;
+    // ADDED 1.0.0.0
+    optional PortSourceType source = 5;
+}
+
+// ADDED 1.0.0.0
+message CreateCustomPortRequest
+{
+    // ADDED 1.0.0.0
+    optional string code = 1;
+    // ADDED 1.0.0.0
+    optional string name = 2;
+
+    oneof PortData
+    {
+        string unloCode = 3;
+        Abs.CommonCore.Contracts.Proto.Cloud.Port.UnecePort orphanData = 4;
+    }
+}
+
+// ADDED 1.0.0.0
+message CustomPortResponse {
+    // ADDED 1.0.0.0
+    repeated CustomPort ports = 1;
+
+    // ADDED 1.0.0.0
+    optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.Paging paging = 2;
+}

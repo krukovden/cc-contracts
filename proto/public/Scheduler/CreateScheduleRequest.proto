@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Scheduler;
+
+import "public/Shared/Application.proto";
+
+message CreateScheduleRequest
+{
+  optional string scheduleId = 1;
+  optional string cronExpression = 2;
+
+  // Scheduled message properties
+  optional bytes payload = 3;
+  map<string, string> headers = 4;
+  optional string contentType = 5;
+  optional string contentEncoding = 6;
+  optional string messageType = 7;
+  optional uint64 messageVersion = 8;
+
+  optional Abs.CommonCore.Contracts.Proto.Shared.Application target_app = 9;
+}

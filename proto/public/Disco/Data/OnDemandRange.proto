@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Data;
+
+import "google/protobuf/timestamp.proto";
+
+message OnDemandRange
+{
+  google.protobuf.Timestamp start = 1;
+  google.protobuf.Timestamp end = 2;
+  optional int64 intervalMilliseconds = 3;
+  optional bool onlyChangedValues = 4;
+}

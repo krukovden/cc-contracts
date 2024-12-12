@@ -1,0 +1,26 @@
+// Schema: GetVoyagesResponse
+// Business Object: GetVoyagesResponse
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Cloud/ERP/GetVoyagesDetails.proto";
+import "public/Error.proto";
+
+// ADDED 1.0.0.0
+message GetVoyagesResponse
+{
+  // ADDED 1.0.0.0
+  optional string status = 1;
+
+  // ADDED 1.0.0.0
+  optional int32 reportId = 2;
+
+  // ADDED 1.0.0.0
+  repeated GetVoyagesDetails voyages = 3;
+
+  // ADDED 1.0.0.0
+  repeated Error errors = 4;
+}

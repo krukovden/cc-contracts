@@ -1,0 +1,155 @@
+// Schema: VoyagePlan
+// Business Object: VoyagePlan, PartnerVoyagePlan, PartnerSpecificVoyagePlanData, VoyagePlanItinerary, VoyagePlanStatus, VoyagePlanItineraryBunker, VoyagePlanItineraryBerth
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.VoyagePlan;
+
+import "google/protobuf/timestamp.proto";
+import "public/Cloud/VoyagePlan/Veson/VesonVoyagePlan.proto";
+import "public/Cloud/Shared/Vessel.proto";
+
+// ADDED 1.0.0.0
+message VoyagePlan
+{
+    // ADDED 1.0.0.0
+    optional int64 version = 1;
+    
+    // ADDED 1.0.0.0
+    optional string rawDataReference = 2;
+    
+    // ADDED 1.0.0.0
+    optional string partnerName = 3;
+    
+    // ADDED 1.0.0.0
+    optional string partnerTenantId = 4;
+    
+	// ADDED 1.0.0.0
+    optional string clientTenantId = 5;
+	
+    // ADDED 1.0.0.0
+    optional string voyagePlanNo = 6;
+    
+    // ADDED 1.0.0.0
+    optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.Vessel vesselInfo = 7;
+    
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp commenceDatetime = 8;
+    
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp completeDatetime = 9;
+    
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp sourceDatetime = 10;
+    
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp receivedDatetime = 11;
+    
+    // ADDED 1.0.0.0
+    optional Abs.CommonCore.Contracts.Proto.Cloud.VoyagePlan.VoyagePlanStatus status = 12;
+    
+    // ADDED 1.0.0.0
+    repeated Abs.CommonCore.Contracts.Proto.Cloud.VoyagePlan.VoyagePlanItinerary itineraries = 13;
+}
+
+// ADDED 1.0.0.0
+message PartnerVoyagePlan
+{
+    // ADDED 1.0.0.0
+    optional int64 version = 1;
+
+    // ADDED 1.0.0.0
+    optional VoyagePlan voyageBaseData = 2;
+    
+    // ADDED 1.0.0.0
+    optional Abs.CommonCore.Contracts.Proto.Cloud.VoyagePlan.PartnerSpecificVoyagePlanData partnerData = 3;
+}
+
+// ADDED 1.0.0.0
+message PartnerSpecificVoyagePlanData
+{
+    // ADDED 1.0.0.0
+    optional Abs.CommonCore.Contracts.Proto.Cloud.VoyagePlan.Veson.VesonSpecificData vesonSpecificData = 1;
+}
+
+// ADDED 1.0.0.0
+message VoyagePlanItinerary
+{
+    // ADDED 1.0.0.0
+    optional int64 sequence = 1;
+    
+    // ADDED 1.0.0.0
+    optional string ballastLadenFromPort = 2;
+    
+    // ADDED 1.0.0.0
+    optional string ballastLadenToPort = 3;
+    
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp etaDatetime = 4;
+    
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp etdDatetime = 5;
+    
+    // ADDED 1.0.0.0
+    optional string portFunc = 6;
+    
+    // ADDED 1.0.0.0
+    optional string portName = 7;
+    
+    // ADDED 1.0.0.0
+    optional string portNo = 8;
+    
+    // ADDED 1.0.0.0
+    repeated Abs.CommonCore.Contracts.Proto.Cloud.VoyagePlan.VoyagePlanItineraryBunker bunkers = 9;
+    
+    // ADDED 1.0.0.0
+    repeated Abs.CommonCore.Contracts.Proto.Cloud.VoyagePlan.VoyagePlanItineraryBerth berths = 10;
+	
+    // ADDED 1.0.0.0
+	optional string portUnloCode = 11;
+}
+
+// ADDED 1.0.0.0
+message VoyagePlanStatus
+{
+    // ADDED 1.0.0.0
+    enum Enum
+    {
+        Unknown = 0;
+        Commenced = 1;
+        Scheduled = 2;
+        Completed = 3;
+        Forecast = 4;
+        Closed = 5;
+    }
+    
+    // ADDED 1.0.0.0
+    optional Enum value = 1;
+}
+
+// ADDED 1.0.0.0
+message VoyagePlanItineraryBunker
+{
+    // ADDED 1.0.0.0
+    optional string fuelType = 1;
+    
+    // ADDED 1.0.0.0
+    optional int64 oprQty = 2;
+    
+    // ADDED 1.0.0.0
+    optional int64 robArrival = 3;
+    
+    // ADDED 1.0.0.0
+    optional int64 robDeparture = 4;
+}
+
+// ADDED 1.0.0.0
+message VoyagePlanItineraryBerth
+{
+    // ADDED 1.0.0.0
+    optional string berthShortName = 1;
+
+    // ADDED 1.0.0.0
+    optional int64 berthSeq = 2;
+}

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package abs.cc.drex.central.config;
+option csharp_namespace = "Abs.Cc.Drex.Central.Config";
+option java_package = "com.abs.cc.drex.central.config";
+
+message CentralAdapterConfig
+{
+    optional string Name = 1;
+    optional string Ver  = 2;
+}
+
+message VesselConfig
+{
+    optional string Imo  = 2;
+    optional string Name = 1;
+}
+
+message CentralAdapterEntry
+{
+    optional google.protobuf.Timestamp Timestamp = 1;
+    optional CentralAdapterConfig      Adapter   = 2;
+}
+
+message VesselEntry
+{
+    optional google.protobuf.Timestamp    Timestamp = 1;
+    optional VesselConfig                 Vessel    = 2;
+}

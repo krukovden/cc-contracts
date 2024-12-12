@@ -1,0 +1,182 @@
+﻿{
+  "$id": "https://eagle.org/disco-client-config.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DiscoClientAppConfig",
+  "type": "object",
+  "required": [ "key" ],
+  "properties": {
+    "key": {
+      "description": "The unique key for identifying the client app. Will be used for observability purposes.",
+      "type": "string"
+    },
+    "datasetToVendorMapping": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/dataVendorItem"
+      }
+    },
+    "remoteJobs": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "$ref": "#/$defs/discoScheduleCreationRequest"
+      }
+    }
+  },
+  "$defs": {
+    "dataVendorItem": {
+      "title": "DataVendorItem",
+      "type": "object",
+      "required": [ "datatype", "vendor" ],
+      "properties": {
+        "datatype": {
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "Location",
+            "Fuel",
+            "Weather",
+            "Draft",
+            "Navigation",
+            "Engine"
+          ]
+        },
+        "vendor": {
+          "type": "string",
+          "enum": [
+            "Siemens",
+            "Ge",
+            "KDI"
+          ]
+        }
+      }
+    },
+    "discoScheduleCreationRequest": {
+      "title": "DiscoScheduleCreationRequest",
+      "type": "object",
+      "required": [ "requestId" ],
+      "properties": {
+        "requestId": {
+          "type": "string"
+        },
+        "scheduleId": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "Remote",
+            "Local"
+          ]
+        },
+        "scheduleSingle": {
+          "type": "object",
+          "properties": {
+            "cronExpression": { "type": "string" }
+          }
+        },
+        "scheduleRange": {
+          "type": "object",
+          "properties": {
+            "cronExpression": { "type": "string" },
+            "start": { "type": "string" },
+            "end": { "type": "string" },
+            "intervalMilliseconds": { "type": "string" }
+          }
+        },
+        "draftDataTypes": {
+          "type": "object",
+          "properties": {
+            "dataType": {
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "locationDataTypes": {
+          "type": "object",
+          "properties": {
+            "dataType": {
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "fuelDataTypes": {
+          "type": "object",
+          "properties": {
+            "dataType": {
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "weatherDataTypes": {
+          "type": "object",
+          "properties": {
+            "dataType": {
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "navigationDataTypes": {
+          "type": "object",
+          "properties": {
+            "dataType": {
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "engineDataTypes": {
+          "type": "object",
+          "properties": {
+            "dataType": {
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "oneOf": [
+            { "required": [ "scheduleSingle" ] },
+            { "required": [ "scheduleRange" ] }
+          ]
+        },
+        {
+          "oneOf": [
+            { "required": [ "draftDataTypes" ] },
+            { "required": [ "locationDataTypes" ] },
+            { "required": [ "fuelDataTypes" ] },
+            { "required": [ "weatherDataTypes" ] },
+            { "required": [ "navigationDataTypes" ] },
+            { "required": [ "engineDataTypes" ] }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+// Schema: SyncTenantRequest file
+// Business Object: SyncTenantRequest
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.OnboardingTool;
+
+// ADDED 1.0.0.0
+message SyncTenantRequest {
+    // ADDED 1.0.0.0
+    optional string clientId = 1;
+    // ADDED 1.0.0.0
+    optional string ccTenantId = 2;
+    // ADDED 1.0.0.0
+    optional string tenantName = 3;
+}

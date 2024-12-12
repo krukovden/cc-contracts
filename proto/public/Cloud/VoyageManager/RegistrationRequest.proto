@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.VoyageManager;
+
+// ADDED 1.0.0.0
+message RegistrationRequest
+{
+  // ADDED 1.0.0.0
+  optional string ccTenantId = 1;
+
+  // ADDED 1.0.0.0
+  optional string rmqHostname = 2;
+
+  // ADDED 1.0.0.0
+  optional int32 rmqPort = 3;
+
+  // ADDED 1.0.0.0
+  optional string rmqVirtualHost = 4;
+
+  // ADDED 1.0.0.0
+  optional string username = 5;
+
+  // ADDED 1.0.0.0
+  optional string password = 6;
+
+  // ADDED 1.0.0.0
+  optional string incomingExchangeName = 7;
+
+  // ADDED 1.0.0.0
+  optional string incomingQueueName = 8;
+
+  // ADDED 1.0.0.0
+  optional string outgoingExchangeName = 9;
+
+  // ADDED 1.0.0.0
+  optional string outgoingQueueName = 10;
+  
+  // ADDED 1.0.0.0
+  optional bool isRequestorSource = 11;
+
+  // ADDED 1.0.0.0
+  optional bool isAmqpsProtocol = 12;
+}

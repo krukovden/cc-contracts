@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Schedules;
+
+message ScheduleRange
+{
+  string cronExpression = 1;
+  string start = 2; // "d | [d.]hh:mm[:ss[.ff]]"
+  string end = 3; // "d | [d.]hh:mm[:ss[.ff]]"
+  optional int64 intervalMilliseconds = 4;
+}

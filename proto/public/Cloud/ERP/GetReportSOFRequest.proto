@@ -1,0 +1,20 @@
+// Schema: GetReportSOFRequest
+// Business Object: GetReportSOFRequest
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+// ADDED 1.0.0.0
+message GetReportSOFRequest
+{
+  // ADDED 1.0.0.0
+  optional string correlationId = 1;
+
+  // ADDED 1.0.0.0
+  optional int32 reportId = 2;
+  
+  // ADDED 1.0.0.0
+  repeated string voyageIds = 3;
+}

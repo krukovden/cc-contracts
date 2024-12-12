@@ -1,0 +1,19 @@
+// Schema: OtherFuel
+// Business Object: OtherFuel
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Cloud/ERP/EmissionFactor.proto";
+
+// ADDED 1.0.0.0
+message OtherFuel
+{
+  // ADDED 1.0.0.0
+  optional string name = 1;
+
+  // ADDED 1.0.0.0
+  repeated EmissionFactor emissionFactors = 2;
+}

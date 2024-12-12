@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Data;
+
+import "google/protobuf/timestamp.proto";
+
+message OnDemandSingle
+{
+  google.protobuf.Timestamp target = 1;
+}

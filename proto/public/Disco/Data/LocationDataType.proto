@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Data.Location;
+
+enum LocationDataType
+{
+  Unknown = 0;
+  Latitude = 1;
+  Longitude = 2;
+}
+
+message LocationDataTypeCollection
+{
+  repeated LocationDataType dataType = 1; // Empty interpreted as "all"
+}

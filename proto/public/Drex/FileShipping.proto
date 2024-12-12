@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Drex.FileShipping;
+
+import "google/protobuf/timestamp.proto";
+import "public/Shared/Application.proto";
+
+message DrexFileRequest
+{ 
+  // Client-provided request ID that should be unique to identify specific requests.
+  string request_id = 1;
+  
+  // The relative path from the expected folder based on the operation being performed. For instance, if I was moving the file `FileA.txt` from Site to Central, then the relative path `FileA.txt` would correspond to the full file drop zone path `/[client]/to-central/FileA.txt`. If I was moving the file `FileA.txt` from central to a site, then the expected full Sftp path would be `/[client]/to-site/[site]/FileA.txt`.
+  string relative_path = 2;
+  
+  // Indicates the expected Base64 encoded hash for the file to be moved. This is optional and if provided will be used to ensure file integrity.
+  optional string checksum_hash = 3;
+  
+  // Indicates the algorithm that was used to calculate the checksum of the file to transfer. Currently the supported algorithms are `md5` and `sha1`
+  optional DrexFileChecksum checksum_algorithm = 4;
+
+  // If false, and a file with the same name is found at the destination, the request will fail with a “Conflict” error code; if true, the file will overwrite any file of the same name that exists at the destination
+  optional bool overwrite = 5;
+  
+  // Indicates that the request should not be retried at all. The request is attempted a single time and if there is an error then an error response is generated and the sender is notified.
+  optional bool no_retry = 6;
+
+  // The target application that the file is being moved to. This data will be used to ensure the file is moved to the correct location.
+  optional Abs.CommonCore.Contracts.Proto.Shared.Application target_app = 7;
+}
+
+enum DrexFileChecksum
+{
+  UNKNOWN_ALGORITHM = 0;
+  MD5 = 1;
+  SHA1 = 2;
+  SHA256 = 3;
+  SHA384 = 4;
+  SHA512 = 5;
+}
+
+enum DrexFileRequestStatus
+{
+  // The status of the request was not able to be determined. This should not happen and generally indicates a system level problem. A simple retry may be sufficient. If not then a support ticket should be filed to investigate the problem further.
+  UNKNOWN = 0;
+  
+  // Indicates the file was moved successfully and is ready to be consumed by the Site or Central clients. This also indicates a notification message was sent however there is no guarantee that the notification was consumed by the client since this operation is outside of the systems guarantees.
+  SUCCEEDED = 1;
+  
+  // Indicates the request itself is invalid and a retry should not be attempted. A more specific error can be found in the `ErrorMessage` property of the response message.
+  FAILED_BAD_REQUEST = 400;
+  
+  // Indicates that the file, whether site or central, could not be found. This is likely an invalid path issue or the file itself was not placed correctly before the request was sent. Client applications should ensure the file exists and then update the request with the correct location.
+  FAILED_FILE_NOT_FOUND = 404;
+  
+  // Indicates that the file already exists. Files can be overwritten by setting the `Overwrite` property to true. This indicates that that file should be copied whether it exists or not at the destination location.
+  FAILED_CONFLICT = 409;
+  
+  // Indicates that the operation was attempted multiple times and was unsuccessful every time. If a retry is desired then the request can be resubmitted.
+  FAILED_RETRIES_EXCEEDED = 429;
+  
+  // Indicates that the time to transfer the file exceeded the requested time. Therefore, if the Client application wants to resubmit the request they can do so by resending the request message.
+  FAILED_TIMEOUT = 504;
+  
+  // Indicates a different unknown error was received. In most cases the `ErrorMessage` property will have more information. A simple retry may be sufficient however if the error is more complicated then a support ticker should be filed to investigate the problem further.
+  FAILED_OTHER = 500;
+}
+
+message DrexFileResponse
+{
+  // The client defined request id and matches the id of the processed request message.
+  string request_id = 2;
+  
+  // The time that the request message was generated and is taken from the request message itself.
+  google.protobuf.Timestamp request_timestamp = 4;
+  
+  // The relative path provided by the request message.
+  string relative_path = 5;
+  
+  // This is the indication of the status of the response. Each available status level is described in the enum.
+  DrexFileRequestStatus status = 6;
+  
+  // This field may contain additional information about the error depending on the status value of the response.
+  optional string error_message = 7;
+}
+
+message DrexFileNotification
+{
+  // The client defined request id and matches the id of the processed request message.
+  string request_id = 1;
+   
+  // The time that the request message was generated and is taken from the request message itself.
+  google.protobuf.Timestamp request_timestamp = 2;
+  
+  // The relative path provided by the request message.
+  string relative_path = 3;
+  
+  // This is the hash if provided by the request message. This can be used to ensure that the received file is the same as the expected one.
+  optional string checksum_hash = 4;
+  
+  // This is the algorithm, if provided by the request, used to calculate the file checksum. Currently the supported algorithms are `md5` and `sha1`
+  optional DrexFileChecksum checksum_algorithm = 5;
+}

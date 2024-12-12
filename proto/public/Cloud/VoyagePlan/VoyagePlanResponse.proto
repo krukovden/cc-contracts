@@ -1,0 +1,24 @@
+// Schema: VoyagePlanResponse
+// Business Object: VoyagePlanResponse
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.VoyagePlanResponse;
+
+import "google/protobuf/timestamp.proto";
+import "public/Cloud/VoyagePlan/VoyagePlan.proto";
+import "public/Cloud/Shared/Paging.proto";
+
+// ADDED 1.0.0.0
+message VoyagePlanResponse
+{
+	// ADDED 1.0.0.0
+	optional int64 version = 1;
+
+	// ADDED 1.0.0.0
+	optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.Paging paging = 2;	
+
+	// ADDED 1.0.0.0
+	repeated Abs.CommonCore.Contracts.Proto.Cloud.VoyagePlan.VoyagePlan plans = 5;
+}

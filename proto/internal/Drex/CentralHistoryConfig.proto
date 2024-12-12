@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "public/Drex/CcDrexCentralConfig.proto";
+
+package abs.cc.drex.central.config;
+option csharp_namespace = "Abs.Cc.Drex.Central.Config";
+option java_package = "com.abs.cc.drex.central.config";
+
+message CentralHistory
+{
+    map<string,CentralAdapterEntry> Adapters = 1;
+    map<string,VesselEntry>         Vessels  = 2;
+}

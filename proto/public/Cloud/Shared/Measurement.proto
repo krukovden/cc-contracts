@@ -1,0 +1,25 @@
+// Schema: Mesurements
+// Business Object: Data with unit
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Shared;
+
+// Version: 1.0.0.0
+message NumericMeasurement {
+  // Version: 1.0.0.0
+  optional double value = 1;
+  
+  // Version: 1.0.0.0
+  optional string unit = 2;
+}
+
+// Version: 1.0.0.0
+message StringMeasurement {
+  // Version: 1.0.0.0
+  optional string value = 1;
+  
+  // Version: 1.0.0.0
+  optional string format = 2;
+}

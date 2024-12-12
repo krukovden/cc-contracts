@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.VoyageManager;
+
+import "google/protobuf/timestamp.proto";
+
+// ADDED 1.0.0.0
+message Registry
+{
+  // ADDED 1.0.0.0
+  optional string ccTenantId = 1;
+
+  // ADDED 1.0.0.0
+  optional string rmqHostname = 2;
+
+  // ADDED 1.0.0.0
+  optional int32 rmqPort = 3;
+
+  // ADDED 1.0.0.0
+  optional string rmqVirtualHost = 4;
+
+  // ADDED 1.0.0.0
+  optional string generatedCredentials = 5;
+
+  // ADDED 1.0.0.0
+  optional google.protobuf.Timestamp creationDate = 6;
+
+  // ADDED 1.0.0.0
+  optional google.protobuf.Timestamp updatingDate = 7;
+
+  // ADDED 1.0.0.0
+  optional string incomingExchangeName = 8;
+
+  // ADDED 1.0.0.0
+  optional string incomingQueueName = 9;
+
+  // ADDED 1.0.0.0
+  optional string outgoingExchangeName = 10;
+
+  // ADDED 1.0.0.0
+  optional string outgoingQueueName = 11;
+
+  // ADDED 1.0.0.0
+  optional string pipelineId = 12;
+}

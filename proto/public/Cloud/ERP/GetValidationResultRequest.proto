@@ -1,0 +1,17 @@
+// Schema: GetValidationResultRequest
+// Business Object: GetValidationResultRequest
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+// ADDED 1.0.0.0
+message GetValidationResultRequest
+{
+  // ADDED 1.0.0.0
+  optional int32 reportId = 1;
+
+  // ADDED 1.0.0.0
+  optional int32 reportYear = 2;
+}

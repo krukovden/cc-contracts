@@ -1,0 +1,34 @@
+// Schema: Error
+// Business Object: Error, ErrorCode
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto;
+
+// ADDED 1.0.0.0
+message ErrorCode
+{
+  // ADDED 1.0.0.0
+  optional string name = 1;
+
+  // ADDED 1.0.0.0
+  optional uint64 code = 2;
+}
+
+// ADDED 1.0.0.0
+message Error
+{
+  // ADDED 1.0.0.0
+  optional ErrorCode code = 1;
+
+  // ADDED 1.0.0.0
+  optional string message = 2;
+}
+
+// ADDED 1.0.0.0
+message ErrorResponse
+{
+  // ADDED 1.0.0.0
+  repeated Error errors = 1;
+}

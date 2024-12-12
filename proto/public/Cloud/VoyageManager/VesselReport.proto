@@ -1,0 +1,1113 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.VoyageManager;
+
+import "google/protobuf/timestamp.proto";
+import "public/Cloud/Shared/Measurement.proto";
+
+message VesselReport {
+  // "Vessel Name": "PERFORMANCE#1"
+  optional string vessel_name = 1;
+  
+  // "IMO Number": "1234567890"
+  optional string imo_number = 2;
+  
+  // "Date Range": "12/05/2021 11:00"
+  optional google.protobuf.Timestamp date_range = 3;
+  
+  // "Voyage No.": "PR001_V1"
+  optional string voyage_no = 4;
+  
+  // "Leg No.": "PR001_V1 - 1"
+  optional string leg_no = 5;
+  
+  // "Event No.": "0004561"
+  optional string event_no = 6;
+  
+  // "Event Name": "STBY_D"
+  optional string event_name = 7;
+  
+  // "Project No.": ""
+  optional string project_no = 8;
+  
+  // "Leg Type": "OPERATIONAL"
+  optional string leg_type = 9;
+  
+  // "Loading Condition": "Laden"
+  optional string loading_condition = 10;
+  
+  // "Charterer": "ABC TRANSPORTATION"
+  optional string charterer = 11;
+  
+  // "GMT Offset": "+ 05:30"
+  optional string gmt_offset = 12;
+  
+  // "Start (Local) (MM/dd/yyyy HH:mm)": "01/03/2023 00:00",
+  // "Start (GMT) (MM/dd/yyyy HH:mm)": "01/02/2023 18:30"
+  optional google.protobuf.Timestamp start = 13;
+  
+  // "Finish (Local) (MM/dd/yyyy HH:mm)": "01/03/2023 00:00",
+  // "Finish (GMT) (MM/dd/yyyy HH:mm)": "01/02/2023 18:30"
+  optional google.protobuf.Timestamp finish = 14;
+  
+  // "Duration (HH:MM)": "00:00"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement duration = 15;  // HH:MM
+
+  // "Master": ""
+  optional string master = 16;
+  
+  //  "Chief Engineer": ""
+  optional string chief_engineer = 17;
+  
+  // "Chief Mate": ""
+  optional string chief_mate = 18;
+  
+  // "Cargo Weight Onboard (MT)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement cargo_weight_onboard = 19;
+  
+  // "Ballast Weight Onboard (Kg)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement ballast_weight_onboard = 20;
+  
+  // "Port Code": "LGB"
+  optional string port_code = 21;
+  
+  // "Distance GPS (NM)": "100"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement distance_gps = 22;
+  
+  // "Distance Log (NM)": "101"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement distance_log = 23;
+  
+  // "Avg Speed GPS (NM/HR)": "0.83"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement avg_speed_gps = 24;  // NM/HR
+  
+  // "Avg Speed Log (NM/HR)": "0.84"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement avg_speed_log = 25;  // NM/HR
+  
+  // "ETA (MM/dd/yyyy HH:mm)": null
+  optional google.protobuf.Timestamp eta = 26;
+  
+  // "ETD (MM/dd/yyyy HH:mm)": null
+  optional google.protobuf.Timestamp etd = 27;
+  
+  // "Sky Condition": "1.00"
+  optional string sky_condition = 28;
+  
+  // "Relative Wind Direction (deg)": "2"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement relative_wind_direction = 29;
+  
+  // "Relative Wind Speed (NM/HR)": "3"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement relative_wind_speed = 30;  // NM/HR
+  
+  // "True Wind Direction (deg)": "4"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement true_wind_direction = 31;
+  
+  // "True Wind Speed (NM/HR)": "0.58"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement true_wind_speed = 32;  // NM/HR
+  
+  // "Beaufort Scale": "1"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement beaufort_scale = 33;
+  
+  // "True Current Direction (deg)": "1"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement true_current_direction = 34;
+  
+  // "True Current Speed (NM/HR)": "2"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement true_current_speed = 35;  // NM/HR
+  
+  // "Wave Height (NM)": "5"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement wave_height = 36;
+  
+  // "Wave Period (seconds)": "1"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement wave_period = 37;
+  
+  // "Significant Wave Height (NM)": "5"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement significant_wave_height = 38;
+  
+  // "Swell Height (NM)": "4"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement swell_height = 39;
+  
+  // "Swell Condition": "No Swell"
+  optional string swell_condition = 40;
+  
+  // "Sea Condition": "1"
+  optional string sea_condition = 41;
+  
+  // "Relative Swell Direction (deg)": "1"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement relative_swell_direction = 42;
+  
+  // "Sea Direction (deg)": "3"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement sea_direction = 43;
+  
+  // "Sea Water Density (gr/gal)": "4"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement sea_water_density = 44;  // gr/gal
+  
+  // "Sea Water Temperature (F)": "5"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement sea_water_temperature = 45;
+  
+  // "Sea Water Depth (ft)": "1"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement sea_water_depth = 46;
+  
+  // "Wet Temperature (F)": "2"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement wet_temperature = 47;
+  
+  // "Dry Temperature (F)": "3"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement dry_temperature = 48;
+  
+  // "Air Pressure (MT)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement air_pressure = 49;
+  
+  // "Trim (NM)": "1"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement trim = 50;
+  
+  // "Trim by": "BY STERN"
+  optional string trim_by = 51;
+  
+  // "Ship Displacement (MT)": "2"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement ship_displacement = 52;
+  
+  // "DWT (MT)": "-24833"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement dwt = 53;
+  
+  // "List": "3"
+  optional string list = 54;
+  
+  // "List By": "Port"
+  optional string list_by = 55;
+  
+  // "BOIL1 - Run Hours (HH:MM)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement boil1_run_time = 56;
+  
+  // "INC1 - Run Hours (HH:MM)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement inc1_run_time = 57;
+  
+  // "EEOI - GPS (gr/(nm*mt))": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement eeoi_gps = 58;
+  
+  // "EEOI - Log (gr/(nm*mt))": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement eeoi_log = 59;
+  
+  // "SCOC (SCOC)": null
+  optional string scoc = 60;
+  
+  // "SCOC-DP (SCOC-D)": null
+  optional string scoc_dp = 61;
+  
+  // "Average pull (MTR)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement average_pull = 62;
+  
+  // "Maximum surge (MTR)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement maximum_surge = 63;
+  
+  // "Wire Length (MTR)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement wire_length = 64;
+  
+  // "Roll (°)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement roll = 65;
+  
+  // "Pitch (°)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement pitch = 66;
+  
+  // "Yawing (°)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement yawing = 67;
+  
+  // "Summary Remarks": null
+  optional string summary_remarks = 68;
+  
+  // "Total Energy Output (joule)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement total_energy_output_joule = 69;
+
+  // "Vessel Position - Port": "VIRGINIA BEACH"
+  // "Vessel Position - Berth": ""
+  // "Vessel Position - Latitude": null
+  // "Vessel Position - Longitude": null
+  // "Vessel Position - Course Heading": ""
+  optional VesselPosition vessel_position = 70;
+
+  // "Propeller - Avg Shaft RPM": null
+  // "Propeller - %Pitch": null
+  // "Propeller - Pitch (NM)": null
+  // "Propeller - Revolutions": null
+  // "Propeller - Avg Shaft Power (KW)": null
+  // "Propeller - Distance Prop (NM)": null
+  // "Propeller - Avg Speed Prop (NM)": null
+  // "Propeller - Slip - GPS (%)": null
+  // "Propeller - Slip - Log (%)": null
+  optional Propeller propeller = 71;
+
+  // "Forward - Port (NM)": "1"
+  // "Forward - Starboard (NM)": "2"
+  // "Forward - Average (NM)": "1.5"
+  // "Midship - Port (NM)": "1"
+  // "Midship - Starboard (NM)": "2"
+  // "Midship - Average (NM)": "1.5"
+  // "Aft - Port (NM)": "3"
+  // "Aft - Starboard (NM)": "2"
+  // "Aft - Average (NM)": "2.5"
+  optional VesselSectionMeasurements measurements = 72;
+
+  // "Engine Room 1 - Engine Room Name": "ENGINE ROOM NO 2"
+  // "Engine Room 1 - Temperature (F)": null
+  // "Engine Room 1 - Barometric Pressure (MT)": null
+  // "Engine Room 1 - Relative Humidity": null
+  // "Engine Room 2 - Engine Room Name": "ENGINE ROOM NO 1"
+  // "Engine Room 2 - Temperature (F)": null
+  // "Engine Room 2 - Barometric Pressure (MT)": null
+  // "Engine Room 2 - Relative Humidity": null
+  repeated EngineRoom engine_rooms = 73;
+
+  // "Engine 1 - Engine Name": "ME1"
+  // "Engine 1 - Revolutions": null
+  // "Engine 1 - Avg Engine RPM": null
+  // "Engine 1 - Cumulative Hour Meter": null
+  // "Engine 1 - Reduced Speed Running Hours (HH:MM)": null
+  // "Engine 1 - Full Speed Running Hours (HH:MM)": null
+  // "Engine 1 - Total Engine Stoppage Hours (HH:MM)": null
+  // "Engine 1 - Avg Engine Power (KW)": null
+  // "Engine 1 - Total Energy (joule)": null
+  // "Engine 1 - Fuel Rack Position": null
+  // "Engine 1 - ME Load Indicator": null
+  // "Engine 1 - %MCR": null
+  // "Engine 1 - %Engine RPM": null
+  // "Engine 1 - Avg SFOC (MT/WH)": null
+  // "Engine 1 - Thermal Load(%)": null
+  // "Engine 1 - Fuel Manifold Temperature (F)": null
+  // "Engine 1 - Avg Scavenge Air Temp (F)": null
+  // "Engine 1 - Avg Scavenge Air Press (MT)": null
+  optional Engine engine_1 = 74;
+
+  // "Boiler 1 - Boiler Name": "BOIL1"
+  // "Boiler 1 - Avg Load (%)": null
+  optional Boiler boiler_1 = 75;
+  
+  // "Equipment 1 - Equipment Name": "AE1"
+  // "Equipment 1 - Consumer/ Source": "Consumer"
+  // "Equipment 1 - Avg Power (watt)": null
+  // "Equipment 1 - Total Energy (joule)": null
+  // "Equipment 1 - Max Power (watt)": "1900"
+  // "Equipment 2 - Equipment Name": "ME1"
+  // "Equipment 2 - Consumer/ Source": "Consumer"
+  // "Equipment 2 - Avg Power (watt)": null
+  // "Equipment 2 - Total Energy (joule)": null
+  // "Equipment 2 - Max Power (watt)": "1900"
+  // "Equipment 3 - Equipment Name": "RP1"
+  // "Equipment 3 - Consumer/ Source": "Consumer"
+  // "Equipment 3 - Avg Power (watt)": null
+  // "Equipment 3 - Total Energy (joule)": null
+  // "Equipment 3 - Max Power (watt)": "1234"
+  // "Equipment 4 - Equipment Name": "Cargo Pump- E"
+  // "Equipment 4 - Consumer/ Source": "Consumer"
+  // "Equipment 4 - Avg Power (watt)": null
+  // "Equipment 4 - Total Energy (joule)": null
+  // "Equipment 4 - Max Power (watt)": null
+  repeated Equipment equipment = 76;
+
+  // "Consumption-Main Engines-Diesel/Gas Oil (MT)": "2"
+  // "Consumption-Main Engines-Heavy Fuel Oil (HFO) (MT)": "2"
+  // "Consumption-Main Engines-Light Fuel Oil (LFO) (MT)": "2"
+  // "Consumption-Main Engines-Liquefied NATURAL Gas (LNG) (MT)": "2"
+  // "Consumption-Main Engines-Liquefied Petroleum Gas (LPG) (MT)": "4"
+  // "Consumption-Main Engines-Ethanol (MT)": "2"
+  // "Consumption-Main Engines-Methanol (MT)": "2"
+  // "Consumption-Auxiliary Engines-Diesel/Gas Oil (MT)": "2"
+  // "Consumption-Auxiliary Engines-Heavy Fuel Oil (HFO) (MT)": "2"
+  // "Consumption-Auxiliary Engines-Light Fuel Oil (LFO) (MT)": "2"
+  // "Consumption-Auxiliary Engines-Liquefied NATURAL Gas (LNG) (MT)": "2"
+  // "Consumption-Auxiliary Engines-Liquefied Petroleum Gas (LPG) (MT)": "4"
+  // "Consumption-Auxiliary Engines-Ethanol (MT)": "2"
+  // "Consumption-Auxiliary Engines-Methanol (MT)": "2"
+  // "Consumption-Boilers-Diesel/Gas Oil (MT)": "2"
+  // "Consumption-Boilers-Heavy Fuel Oil (HFO) (MT)": "2"
+  // "Consumption-Boilers-Light Fuel Oil (LFO) (MT)": "2"
+  // "Consumption-Boilers-Liquefied NATURAL Gas (LNG) (MT)": "2"
+  // "Consumption-Boilers-Liquefied Petroleum Gas (LPG) (MT)": "4"
+  // "Consumption-Boilers-Ethanol (MT)": "2"
+  // "Consumption-Boilers-Methanol (MT)": "2"
+  // "Consumption-Incinerators-Diesel/Gas Oil (MT)": null
+  // "Consumption-Incinerators-Heavy Fuel Oil (HFO) (MT)": "2"
+  // "Consumption-Incinerators-Light Fuel Oil (LFO) (MT)": "1"
+  // "Consumption-Incinerators-Liquefied NATURAL Gas (LNG) (MT)": null
+  // "Consumption-Incinerators-Liquefied Petroleum Gas (LPG) (MT)": "1"
+  // "Consumption-Incinerators-Ethanol (MT)": null
+  // "Consumption-Incinerators-Methanol (MT)": null
+  // "Consumption - Diesel/Gas Oil (MT)": "9"
+  // "Consumption - Heavy Fuel Oil (HFO) (MT)": "9"
+  // "Consumption - Light Fuel Oil (LFO) (MT)": "10"
+  // "Consumption - Liquefied NATURAL Gas (LNG) (MT)": "7"
+  // "Consumption - Liquefied Petroleum Gas (LPG) (MT)": "18"
+  // "Consumption - Ethanol (MT)": "8"
+  // "Consumption - Methanol (MT)": "8"
+  // "Consumption - Auxiliary Engine System (LI)": "2"
+  // "Consumption - Main Engine Cylinder (LI)": "2"
+  // "Consumption - Main Engine System (LI)": "2"
+  // "Consumption - All Water (MT)": ""
+  // "Consumption - Ballast Water (MT)": ""
+  // "Consumption - Boiler Feed Water (MT)": ""
+  // "Consumption - Demineralized Water (MT)": ""
+  // "Consumption - Drill Water (MT)": ""
+  // "Consumption - Fresh Water (MT)": ""
+  // "Consumption - Potable Water (MT)": ""
+  optional Consumption consumption = 77;
+
+  // "Bunkering - Diesel/Gas Oil (MT)": ""
+  // "Bunkering - Heavy Fuel Oil (HFO) (MT)": "2"
+  // "Bunkering - Light Fuel Oil (LFO) (MT)": ""
+  // "Bunkering - Liquefied NATURAL Gas (LNG) (MT)": ""
+  // "Bunkering - Liquefied Petroleum Gas (LPG) (MT)": ""
+  // "Bunkering - Ethanol (MT)": ""
+  // "Bunkering - Methanol (MT)": ""
+  // "Bunkering - Auxiliary Engine System (LI)": ""
+  // "Bunkering - Main Engine Cylinder (LI)": ""
+  // "Bunkering - Main Engine System (LI)": ""
+  // "Bunkering - All Water (MT)": ""
+  // "Bunkering - Ballast Water (MT)": ""
+  // "Bunkering - Boiler Feed Water (MT)": ""
+  // "Bunkering - Demineralized Water (MT)": ""
+  // "Bunkering - Drill Water (MT)": ""
+  // "Bunkering - Fresh Water (MT)": ""
+  // "Bunkering - Potable Water (MT)": ""
+  optional Bunkering bunkering = 78;
+
+  // "Ending ROB - Diesel/Gas Oil (MT)": "102"
+  // "Ending ROB - Heavy Fuel Oil (HFO) (MT)": "99"
+  // "Ending ROB - Light Fuel Oil (LFO) (MT)": "123"
+  // "Ending ROB - Liquefied NATURAL Gas (LNG) (MT)": "98"
+  // "Ending ROB - Liquefied Petroleum Gas (LPG) (MT)": "190"
+  // "Ending ROB - Ethanol (MT)": "86"
+  // "Ending ROB - Methanol (MT)": "92"
+  // "Ending ROB - Auxiliary Engine System (LI)": "199"
+  // "Ending ROB - Main Engine Cylinder (LI)": "199"
+  // "Ending ROB - Main Engine System (LI)": "199"
+  // "Ending ROB - All Water (MT)": "412"
+  // "Ending ROB - Ballast Water (MT)": "50"
+  // "Ending ROB - Boiler Feed Water (MT)": "47"
+  // "Ending ROB - Demineralized Water (MT)": "86"
+  // "Ending ROB - Drill Water (MT)": "70"
+  // "Ending ROB - Fresh Water (MT)": "99"
+  // "Ending ROB - Potable Water (MT)": "60"
+  // "Ending ROB - Oily Water (MT)": ""
+  // "Ending ROB - Oily Sludge (MT)": ""
+  // "Ending ROB - C. Domestic wastes (M3)": ""
+  // "Ending ROB - F. Operational wastes (M3)": ""
+  // "Ending ROB - I. E-Waste (M3)": ""
+  // "Ending ROB - J. Cargo residues (non-HME) (M3)": ""
+  // "Ending ROB - K. Cargo residues (HME) (M3)": ""
+  optional EndingROB ending_rob = 79;
+
+  // "Produced OnBoard - All Water (MT)": null
+  // "Produced OnBoard - Ballast Water (MT)": null
+  // "Produced OnBoard - Boiler Feed Water (MT)": null
+  // "Produced OnBoard - Demineralized Water (MT)": null
+  // "Produced OnBoard - Drill Water (MT)": null
+  // "Produced OnBoard - Fresh Water (MT)": null
+  // "Produced OnBoard - Potable Water (MT)": null
+  optional WaterConsumption produced_on_board = 80;
+
+  // "Generated - Oily Water (MT)": null
+  // "Generated - Oily Sludge (MT)": null
+  // "Generated - C. Domestic wastes (M3)": null
+  // "Generated - F. Operational wastes (M3)": null
+  // "Generated - I. E-Waste (M3)": null
+  // "Generated - J. Cargo residues (non-HME) (M3)": null
+  // "Generated - K. Cargo residues (HME) (M3)": null
+  optional Waste generated = 81;
+
+  // "Discharged - Oily Water (MT)": null
+  // "Discharged - Oily Sludge (MT)": null
+  // "Discharged - C. Domestic wastes (M3)": null
+  // "Discharged - F. Operational wastes (M3)": null
+  // "Discharged - I. E-Waste (M3)": null
+  // "Discharged - J. Cargo residues (non-HME) (M3)": null
+  // "Discharged - K. Cargo residues (HME) (M3)": null
+  optional Waste discharged = 82;
+
+  // "Cargo - Type of Operation": null
+  // "Before Cargo Transfer - Forward - Port (NM)": null
+  // "Before Cargo Transfer - Forward - Starboard (NM)": null
+  // "Before Cargo Transfer - Forward - Average (NM)": null
+  // "Before Cargo Transfer - Midship - Port (NM)": null
+  // "Before Cargo Transfer - Midship - Starboard (NM)": null
+  // "Before Cargo Transfer - Midship - Average (NM)": null
+  // "Before Cargo Transfer - Aft - Port (NM)": null
+  // "Before Cargo Transfer - Aft - Starboard (NM)": null
+  // "Before Cargo Transfer - Aft - Average (NM)": null
+  // "After Cargo Transfer - Forward - Port (NM)": null
+  // "After Cargo Transfer - Forward - Starboard (NM)": null
+  // "After Cargo Transfer - Forward - Average (NM)": null
+  // "After Cargo Transfer - Midship - Port (NM)": null
+  // "After Cargo Transfer - Midship - Starboard (NM)": null
+  // "After Cargo Transfer - Midship - Average (NM)": null
+  // "After Cargo Transfer - Aft - Port (NM)": null
+  // "After Cargo Transfer - Aft - Starboard (NM)": null
+  // "After Cargo Transfer - Aft - Average (NM)": null
+  // "After Cargo Transfer - Trim (NM)": null
+  // "After Cargo Transfer - Trim by": null
+  // "After Cargo Transfer - List": null
+  // "After Cargo Transfer - List By": null
+  // "After Cargo Transfer - Ship Displacement (MT)": null
+  // "After Cargo Transfer - DWT (MT)": null
+  optional CargoTransfer cargo_transfer = 83;
+
+  // "Cargo Summary - Weight at Start (MT)": null
+  // "Cargo Summary - Weight Transferred (MT)": null
+  optional CargoSummary cargo_summary = 84;
+
+  // "Ballast Start Location - Port": ""
+  // "Ballast Start Location - Berth": ""
+  // "Ballast Start Location - At": ""
+  // "Ballast End Location - Port": ""
+  // "Ballast End Location - Berth": ""
+  // "Ballast End Location - At": ""
+  // "Ballast Start Location - Latitude": null
+  // "Ballast Start Location - Longitude": null
+  // "Ballast End Location - Latitude": null
+  // "Ballast End Location - Longitude": null
+  // "Ballast Summary - Volume Exchanged (M3)": null
+  // "Ballast Summary - Weight Handled (Kg)": null
+  optional Ballast ballast = 85;
+
+  // "Landmark - Name": null
+  // "Landmark - Latitude": null
+  // "Landmark - Longitude": null
+  // "Landmark - Bearing": null
+  // "Landmark - Distance From Vessel (NM)": null
+  optional Landmark landmark = 86;
+
+  // "Total SOx Emissions (MT)": "1.36"
+  // "Total CO2 Emissions (MT)": "210.62"
+  // "Total NOx Emissions (MT)": "4.83"
+  // "Total CH4 Emissions (MT)": "0.36"
+  optional Emissions emissions = 87;
+
+  // "Transportation Index - GPS (gr/(nm*mt))": "-6.44"
+  // "Transportation Index - Log (gr/(nm*mt))": "-6.38"
+  optional TransportationIndex transportation_index = 88;
+
+  // "Voyage Details - ETA Port (MM/dd/yyyy HH:mm)": null
+  // "Voyage Details - ETA Port (GMT) (MM/dd/yyyy HH:mm)": null
+  // "Voyage Details - ETA Berth (MM/dd/yyyy HH:mm)": null
+  // "Voyage Details - ETA Berth (GMT) (MM/dd/yyyy HH:mm)": null
+  // "Voyage Details - Remaining Distance to Arrival Port (NM)": null
+  // "Voyage Details - ROB on arrival (MT)": null
+  // "Voyage Details - ETD (MM/dd/yyyy HH:mm)": null
+  // "Voyage Details - ETD (GMT) (MM/dd/yyyy HH:mm)": null
+  // "Voyage Details - ETA FPOC based on speed on ground (GMT) (MM/dd/yyyy HH:mm)": ""
+  // "Voyage Details - ETA FPOC based on speed through water (GMT) (MM/dd/yyyy HH:mm)": ""
+  optional ArrivalInfo voyage_details = 89;
+
+  // "Leg Details - ETA Port (MM/dd/yyyy HH:mm)": null
+  // "Leg Details - ETA Port (GMT) (MM/dd/yyyy HH:mm)": null
+  // "Leg Details - ETA Berth (MM/dd/yyyy HH:mm)": null
+  // "Leg Details - ETA Berth (GMT) (MM/dd/yyyy HH:mm)": null
+  // "Leg Details - Remaining Distance to Arrival Port (NM)": null
+  // "Leg Details - ROB on arrival (MT)": null
+  // "Leg Details - ETD (MM/dd/yyyy HH:mm)": null
+  // "Leg Details - ETD (GMT) (MM/dd/yyyy HH:mm)": null
+  // "Leg Details - ETA FPOC based on speed on ground (GMT) (MM/dd/yyyy HH:mm)": ""
+  // "Leg Details - ETA FPOC based on speed through water (GMT) (MM/dd/yyyy HH:mm)": ""
+  optional ArrivalInfo leg_details = 90;
+
+  // "PIF 1 - Type": "Search and Rescue"
+  // "PIF 1 - Duration (HH:MM)": null
+  // "PIF 1 - Distance (NM)": "2"
+  optional PIF pif_1 = 91;
+
+  // "Hindcast Weather Data - Latitude": null
+  // "Hindcast Weather Data - Longitude": null
+  // "Hindcast Weather Data - Avg Speed GPS (NM/HR)": null
+  // "Hindcast Weather Data - Course Heading": null
+  // "Hindcast Weather Data - Wave Height (MTR)": null
+  // "Hindcast Weather Data - Wave Period(s)": null
+  // "Hindcast Weather Data - Swell Height (MTR)": null
+  // "Hindcast Weather Data - Swell Period(s)": null
+  // "Hindcast Weather Data - Swell Direction(deg)": null
+  // "Hindcast Weather Data - True Wind Speed (NM/HR)": null
+  // "Hindcast Weather Data - True Wind Direction(deg)": null
+  // "Hindcast Weather Data - True Current Direction(deg)": null
+  // "Hindcast Weather Data - True Current speed (NM/HR)": null
+  // "Hindcast Weather Data - Beaufort Scale": null
+  optional WeatherData hindcast_weather_data = 92;
+}
+
+message VesselPosition {
+  // "Vessel Position - Port": "VIRGINIA BEACH"
+  optional string port = 1;
+
+  // "Vessel Position - Berth": ""
+  optional string berth = 2;
+
+  // "Vessel Position - Latitude": "11°00′N"
+  optional string latitude = 3;
+
+  // "Vessel Position - Longitude": "011°00′E"
+  optional string longitude = 4;
+
+  // "Vessel Position - Course Heading": "004"
+  optional string course_heading = 5;
+}
+
+message Propeller {
+  // "Propeller - Avg Shaft RPM": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement avg_shaft_rpm = 1;
+
+  // "Propeller - %Pitch": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement percent_pitch = 2;
+  
+  // "Propeller - Pitch (NM)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement pitch = 3;
+  
+  // "Propeller - Revolutions": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement revolutions = 4;
+  
+  // "Propeller - Avg Shaft Power (KW)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement avg_shaft_power = 5;
+  
+  // "Propeller - Distance Prop (NM)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement distance_prop = 6;
+  
+  // "Propeller - Avg Speed Prop (NM)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement avg_speed_prop = 7;
+  
+  // "Propeller - Slip - GPS (%)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement slip_gps = 8;
+  
+  // "Propeller - Slip - Log (%)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement slip_log = 9;
+}
+
+message NauticalMeasurements {
+  // "Forward - Port (NM)": "1"
+  // "Midship - Port (NM)": "1"
+  // "Aft - Port (NM)": "3"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement port = 1;
+
+  // "Forward - Starboard (NM)": "2"
+  // "Midship - Starboard (NM)": "2"
+  // "Aft - Starboard (NM)": "2"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement starboard = 2;
+
+  // "Forward - Average (NM)": "1.5"
+  // "Midship - Average (NM)": "1.5"
+  // "Aft - Average (NM)": "2.5"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement average = 3;
+}
+
+message Engine {
+  //"Engine 1 - Engine Name": "ME1"
+  optional string engine_name = 1;
+  
+  // "Engine 1 - Revolutions": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement revolutions = 2;
+  
+  // "Engine 1 - Avg Engine RPM": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement avg_engine_rpm = 3;
+  
+  // "Engine 1 - Cumulative Hour Meter": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement cumulative_hour_meter = 4;
+  
+  // "Engine 1 - Reduced Speed Running Hours (HH:MM)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement reduced_speed_running_hours = 5;  // HH:MM
+  
+  // "Engine 1 - Full Speed Running Hours (HH:MM)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement full_speed_running_hours = 6;     // HH:MM
+  
+  // "Engine 1 - Total Engine Stoppage Hours (HH:MM)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement total_engine_stoppage_hours = 7;  // HH:MM
+  
+  // "Engine 1 - Avg Engine Power (KW)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement avg_engine_power = 8;
+  
+  // "Engine 1 - Total Energy (joule)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement total_energy = 9;
+  
+  // "Engine 1 - Fuel Rack Position": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement fuel_rack_position = 10;
+  
+  // "Engine 1 - ME Load Indicator": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement me_load_indicator = 11;
+  
+  // "Engine 1 - %MCR": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement percent_mcr = 12; // -----?
+  
+  // "Engine 1 - %Engine RPM": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement engine_rpm = 13;
+  
+  // "Engine 1 - Avg SFOC (MT/WH)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement avg_sfoc = 14;
+  
+  // "Engine 1 - Thermal Load(%)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement thermal_load = 15;
+  
+  // "Engine 1 - Fuel Manifold Temperature (F)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement fuel_manifold_temperature = 16;
+  
+  // "Engine 1 - Avg Scavenge Air Temp (F)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement avg_scavenge_air_temp = 17;
+  
+  // "Engine 1 - Avg Scavenge Air Press (MT)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement avg_scavenge_air_press = 18;
+}
+
+message EngineRoom {
+  // "Engine Room 1 - Engine Room Name": "ENGINE ROOM NO 2"
+  // "Engine Room 2 - Engine Room Name": "ENGINE ROOM NO 1"
+  optional string engine_room_name = 1;
+
+  // "Engine Room 1 - Temperature (F)": null
+  // "Engine Room 2 - Temperature (F)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement temperature = 2;
+  
+  // "Engine Room 1 - Barometric Pressure (MT)": null
+  // "Engine Room 2 - Barometric Pressure (MT)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement barometric_pressure = 3;
+  
+  // "Engine Room 1 - Relative Humidity": null
+  // "Engine Room 2 - Relative Humidity": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement relative_humidity = 4;
+}
+
+message Boiler {
+  // "Boiler 1 - Boiler Name": "BOIL1"
+  optional string boiler_name = 1;
+
+  // "Boiler 1 - Avg Load (%)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement avg_load = 2;
+}
+
+message Equipment {
+  // "Equipment 1 - Equipment Name": "AE1"
+  // "Equipment 2 - Equipment Name": "ME1"
+  // "Equipment 3 - Equipment Name": "RP1"
+  // "Equipment 4 - Equipment Name": "Cargo Pump- E"
+  optional string equipment_name = 1;
+  
+  // "Equipment 1 - Consumer/ Source": "Consumer"
+  // "Equipment 2 - Consumer/ Source": "Consumer"
+  // "Equipment 3 - Consumer/ Source": "Consumer"
+  // "Equipment 4 - Consumer/ Source": "Consumer"
+  optional string consumer_source = 2;
+  
+  // "Equipment 1 - Avg Power (watt)": null
+  // "Equipment 2 - Avg Power (watt)": null
+  // "Equipment 3 - Avg Power (watt)": null
+  // "Equipment 4 - Avg Power (watt)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement avg_power = 3;
+  
+  // "Equipment 1 - Total Energy (joule)": null
+  // "Equipment 2 - Total Energy (joule)": null
+  // "Equipment 3 - Total Energy (joule)": null
+  // "Equipment 4 - Total Energy (joule)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement total_energy = 4;
+  
+  // "Equipment 1 - Max Power (watt)": "1900"
+  // "Equipment 2 - Max Power (watt)": "1900"
+  // "Equipment 3 - Max Power (watt)": "1234"
+  // "Equipment 4 - Max Power (watt)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement max_power = 5;
+
+  // "AE1 - Run Hours (HH:MM)": null
+  // "ME1 - Run Hours (HH:MM)": null
+  // "RP1 - Run Hours (HH:MM)": null
+  // "Cargo Pump- E - Run Hours (HH:MM)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement run_hours = 6;
+}
+
+message Consumption {
+  // "Consumption-Main Engines-Diesel/Gas Oil (MT)": "2"
+  // "Consumption-Main Engines-Heavy Fuel Oil (HFO) (MT)": "2"
+  // "Consumption-Main Engines-Light Fuel Oil (LFO) (MT)": "2"
+  // "Consumption-Main Engines-Liquefied NATURAL Gas (LNG) (MT)": "2"
+  // "Consumption-Main Engines-Liquefied Petroleum Gas (LPG) (MT)": "4"
+  // "Consumption-Main Engines-Ethanol (MT)": "2"
+  // "Consumption-Main Engines-Methanol (MT)": "2"
+  optional FuelConsumption main = 1;
+
+  // "Consumption-Auxiliary Engines-Diesel/Gas Oil (MT)": "2"
+  // "Consumption-Auxiliary Engines-Heavy Fuel Oil (HFO) (MT)": "2"
+  // "Consumption-Auxiliary Engines-Light Fuel Oil (LFO) (MT)": "2"
+  // "Consumption-Auxiliary Engines-Liquefied NATURAL Gas (LNG) (MT)": "2"
+  // "Consumption-Auxiliary Engines-Liquefied Petroleum Gas (LPG) (MT)": "4"
+  // "Consumption-Auxiliary Engines-Ethanol (MT)": "2"
+  // "Consumption-Auxiliary Engines-Methanol (MT)": "2"
+  optional FuelConsumption auxiliary = 2;
+
+  // "Consumption-Boilers-Diesel/Gas Oil (MT)": "2"
+  // "Consumption-Boilers-Heavy Fuel Oil (HFO) (MT)": "2"
+  // "Consumption-Boilers-Light Fuel Oil (LFO) (MT)": "2"
+  // "Consumption-Boilers-Liquefied NATURAL Gas (LNG) (MT)": "2"
+  // "Consumption-Boilers-Liquefied Petroleum Gas (LPG) (MT)": "4"
+  // "Consumption-Boilers-Ethanol (MT)": "2"
+  // "Consumption-Boilers-Methanol (MT)": "2"
+  optional FuelConsumption boilers = 3;
+
+  // "Consumption-Incinerators-Diesel/Gas Oil (MT)": null
+  // "Consumption-Incinerators-Heavy Fuel Oil (HFO) (MT)": "2"
+  // "Consumption-Incinerators-Light Fuel Oil (LFO) (MT)": "1"
+  // "Consumption-Incinerators-Liquefied NATURAL Gas (LNG) (MT)": null
+  // "Consumption-Incinerators-Liquefied Petroleum Gas (LPG) (MT)": "1"
+  // "Consumption-Incinerators-Ethanol (MT)": null
+  // "Consumption-Incinerators-Methanol (MT)": null
+  optional FuelConsumption incinerators = 4;
+
+  // "Consumption - Diesel/Gas Oil (MT)": "9"
+  // "Consumption - Heavy Fuel Oil (HFO) (MT)": "9"
+  // "Consumption - Light Fuel Oil (LFO) (MT)": "10"
+  // "Consumption - Liquefied NATURAL Gas (LNG) (MT)": "7"
+  // "Consumption - Liquefied Petroleum Gas (LPG) (MT)": "18"
+  // "Consumption - Ethanol (MT)": "8"
+  // "Consumption - Methanol (MT)": "8"
+  optional FuelConsumption consumption = 5;
+  
+  // "Consumption - Auxiliary Engine System (LI)": "2"
+  // "Consumption - Main Engine Cylinder (LI)": "2"
+  // "Consumption - Main Engine System (LI)": "2"
+  optional EngineSystem engine_system = 6;
+  
+  // "Consumption - All Water (MT)": ""
+  // "Consumption - Ballast Water (MT)": ""
+  // "Consumption - Boiler Feed Water (MT)": ""
+  // "Consumption - Demineralized Water (MT)": ""
+  // "Consumption - Drill Water (MT)": ""
+  // "Consumption - Fresh Water (MT)": ""
+  // "Consumption - Potable Water (MT)": ""
+  optional WaterConsumption water_consumption = 7;
+}
+
+message FuelConsumption {
+  // "Diesel/Gas Oil (MT)": "2"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement diesel_gas_oil = 1;
+  
+  // "Heavy Fuel Oil (HFO) (MT)": "2"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement heavy_fuel_oil_hfo = 2;
+  
+  // "Light Fuel Oil (LFO) (MT)": "2"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement light_fuel_oil_lfo = 3;
+  
+  // "Liquefied NATURAL Gas (LNG) (MT)": "2"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement liquefied_natural_gas_lng = 4;
+  
+  // "Liquefied Petroleum Gas (LPG) (MT)": "4"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement liquefied_petroleum_gas_lpg = 5;
+  
+  // "Ethanol (MT)": "2"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement ethanol = 6;
+  
+  // "Methanol (MT)": "2"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement methanol = 7;
+}
+
+message Bunkering {
+  // "Bunkering - Diesel/Gas Oil (MT)": ""
+  // "Bunkering - Heavy Fuel Oil (HFO) (MT)": "2"
+  // "Bunkering - Light Fuel Oil (LFO) (MT)": ""
+  // "Bunkering - Liquefied NATURAL Gas (LNG) (MT)": ""
+  // "Bunkering - Liquefied Petroleum Gas (LPG) (MT)": ""
+  // "Bunkering - Ethanol (MT)": ""
+  // "Bunkering - Methanol (MT)": ""
+  optional FuelConsumption fuel_consumption = 1;
+
+  // "Bunkering - Auxiliary Engine System (LI)": ""
+  // "Bunkering - Main Engine Cylinder (LI)": ""
+  // "Bunkering - Main Engine System (LI)": ""
+  optional EngineSystem engine_system = 2;
+  
+  // "Bunkering - All Water (MT)": ""
+  // "Bunkering - Ballast Water (MT)": ""
+  // "Bunkering - Boiler Feed Water (MT)": ""
+  // "Bunkering - Demineralized Water (MT)": ""
+  // "Bunkering - Drill Water (MT)": ""
+  // "Bunkering - Fresh Water (MT)": ""
+  // "Bunkering - Potable Water (MT)": ""
+  optional WaterConsumption water_consumption = 3;
+}
+
+message EngineSystem {
+  // "Bunkering - Auxiliary Engine System (LI)": ""
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement auxiliary_engine_system = 1;
+  
+  // "Bunkering - Main Engine Cylinder (LI)": ""
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement main_engine_cylinder = 2;
+  
+  // "Bunkering - Main Engine System (LI)": ""
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement main_engine_system = 3;
+}
+
+message WaterConsumption {
+  // All Water (MT)
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement all_water = 1;
+  
+  // Ballast Water (MT)
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement ballast_water = 2;
+  
+  // Boiler Feed Water (MT)
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement boiler_feed_water = 3;
+  
+  // Demineralized Water (MT)
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement demineralized_water = 4;
+  
+  // Drill Water (MT)
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement drill_water = 5;
+  
+  // Fresh Water (MT)
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement fresh_water = 6;
+  
+  // Potable Water (MT)
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement potable_water = 7;
+}
+
+message Waste {
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement oily_water = 1;
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement oily_sludge = 2;
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement domestic_wastes = 3;
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement operational_wastes = 4;
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement e_waste = 5;
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement cargo_residues_non_hme = 6;
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement cargo_residues_hme = 7;
+}
+
+message EndingROB {
+  // "Ending ROB - Diesel/Gas Oil (MT)": "102"
+  // "Ending ROB - Heavy Fuel Oil (HFO) (MT)": "99"
+  // "Ending ROB - Light Fuel Oil (LFO) (MT)": "123"
+  // "Ending ROB - Liquefied NATURAL Gas (LNG) (MT)": "98"
+  // "Ending ROB - Liquefied Petroleum Gas (LPG) (MT)": "190"
+  // "Ending ROB - Ethanol (MT)": "86"
+  // "Ending ROB - Methanol (MT)": "92"
+  optional FuelConsumption fuel_consumption = 1;
+
+  // "Ending ROB - All Water (MT)": "412"
+  // "Ending ROB - Ballast Water (MT)": "50"
+  // "Ending ROB - Boiler Feed Water (MT)": "47"
+  // "Ending ROB - Demineralized Water (MT)": "86"
+  // "Ending ROB - Drill Water (MT)": "70"
+  // "Ending ROB - Fresh Water (MT)": "99"
+  // "Ending ROB - Potable Water (MT)": "60"
+  optional WaterConsumption water_consumption = 2;
+  
+  // "Ending ROB - Oily Water (MT)": ""
+  // "Ending ROB - Oily Sludge (MT)": ""
+  // "Ending ROB - C. Domestic wastes (M3)": ""
+  // "Ending ROB - F. Operational wastes (M3)": ""
+  // "Ending ROB - I. E-Waste (M3)": ""
+  // "Ending ROB - J. Cargo residues (non-HME) (M3)": ""
+  // "Ending ROB - K. Cargo residues (HME) (M3)": ""
+  optional Waste waste = 3;
+
+  // "Ending ROB - Auxiliary Engine System (LI)": "199"
+  // "Ending ROB - Main Engine Cylinder (LI)": "199"
+  // "Ending ROB - Main Engine System (LI)": "199"
+  optional EngineSystem engine_system = 4;
+}
+
+message VesselSectionMeasurements {
+  optional NauticalMeasurements forward = 1;
+  optional NauticalMeasurements midship = 2;
+  optional NauticalMeasurements aft = 3;
+}
+
+message CargoTransfer {
+  // "Cargo - Type of Operation": null
+  optional string type_of_operation = 1;
+
+  // "Before Cargo Transfer - Forward - Port (NM)": null
+  // "Before Cargo Transfer - Forward - Starboard (NM)": null
+  // "Before Cargo Transfer - Forward - Average (NM)": null
+  // "Before Cargo Transfer - Midship - Port (NM)": null
+  // "Before Cargo Transfer - Midship - Starboard (NM)": null
+  // "Before Cargo Transfer - Midship - Average (NM)": null
+  // "Before Cargo Transfer - Aft - Port (NM)": null
+  // "Before Cargo Transfer - Aft - Starboard (NM)": null
+  // "Before Cargo Transfer - Aft - Average (NM)": null
+  optional VesselSectionMeasurements before_cargo_transfer = 2;
+
+  // "After Cargo Transfer - Forward - Port (NM)": null
+  // "After Cargo Transfer - Forward - Starboard (NM)": null
+  // "After Cargo Transfer - Forward - Average (NM)": null
+  // "After Cargo Transfer - Midship - Port (NM)": null
+  // "After Cargo Transfer - Midship - Starboard (NM)": null
+  // "After Cargo Transfer - Midship - Average (NM)": null
+  // "After Cargo Transfer - Aft - Port (NM)": null
+  // "After Cargo Transfer - Aft - Starboard (NM)": null
+  // "After Cargo Transfer - Aft - Average (NM)": null
+  optional VesselSectionMeasurements after_cargo_transfer = 3;
+
+  // "After Cargo Transfer - Trim (NM)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement trim = 4;
+
+  // "After Cargo Transfer - Trim by": null
+  optional string trim_by = 5;
+
+  // "After Cargo Transfer - List": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement list = 6;
+
+  // "After Cargo Transfer - List By": null
+  optional string list_by = 7;
+
+  // "After Cargo Transfer - Ship Displacement (MT)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement ship_displacement = 8;
+
+  // "After Cargo Transfer - DWT (MT)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement dwt = 9;
+}
+
+message CargoSummary {
+  // "Cargo Summary - Weight at Start (MT)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement weight_at_start = 1;
+
+  // "Cargo Summary - Weight Transferred (MT)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement weight_transferred = 2;
+}
+
+message Location {
+  optional string port = 1;
+  optional string berth = 2;
+  optional string at = 3;
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement latitude = 4;
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement longitude = 5;
+}
+
+message BallastSummary {
+  // "Ballast Summary - Volume Exchanged (M3)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement volume_exchanged = 1;
+  
+  // "Ballast Summary - Weight Handled (Kg)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement weight_handled = 2;
+}
+
+message Ballast {
+  // "Ballast Start Location - Port": ""
+  // "Ballast Start Location - Berth": ""
+  // "Ballast Start Location - At": ""
+  // "Ballast Start Location - Latitude": null
+  // "Ballast Start Location - Longitude": null
+  optional Location start_location = 1;
+
+  // "Ballast End Location - Port": ""
+  // "Ballast End Location - Berth": ""
+  // "Ballast End Location - At": ""
+  // "Ballast End Location - Latitude": null
+  // "Ballast End Location - Longitude": null
+  optional Location end_location = 2;
+
+  // "Ballast Summary - Volume Exchanged (M3)": null
+  // "Ballast Summary - Weight Handled (Kg)": null
+  optional BallastSummary summary = 3;
+}
+
+message Landmark {
+  // "Landmark - Name": null
+  optional string name = 1;
+
+  // "Landmark - Latitude": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement latitude = 2;
+
+  // "Landmark - Longitude": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement longitude = 3;
+  
+  // "Landmark - Distance From Vessel (NM)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement distance_from_vessel = 4;
+  
+  // "Landmark - Bearing": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement bearing = 5;
+}
+
+message Emissions {
+  // "Total SOx Emissions (MT)": "1.36"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement total_sox_emissions = 1;
+  
+  // "Total CO2 Emissions (MT)": "210.62"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement total_co2_emissions = 2;
+  
+  // "Total NOx Emissions (MT)": "4.83"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement total_nox_emissions = 3;
+  
+  // "Total CH4 Emissions (MT)": "0.36"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement total_ch4_emissions = 4;
+}
+
+message TransportationIndex {
+  // "Transportation Index - GPS (gr/(nm*mt))": "-6.44"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement gps = 1;
+
+  // "Transportation Index - Log (gr/(nm*mt))": "-6.38"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement log = 2;
+}
+
+message ArrivalInfo {
+  // "Voyage Details - ETA Port (MM/dd/yyyy HH:mm)": null
+  // "Voyage Details - ETA Port (GMT) (MM/dd/yyyy HH:mm)": null
+  optional google.protobuf.Timestamp eta_port = 1;
+  
+  // "Voyage Details - ETA Berth (MM/dd/yyyy HH:mm)": null
+  // "Voyage Details - ETA Berth (GMT) (MM/dd/yyyy HH:mm)": null
+  optional google.protobuf.Timestamp eta_berth = 2;
+  
+  // "Voyage Details - Remaining Distance to Arrival Port (NM)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement remaining_distance_to_arrival_port = 3;
+
+  // "Voyage Details - ROB on arrival (MT)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement rob_on_arrival = 4;
+  
+  // "Voyage Details - ETD (MM/dd/yyyy HH:mm)": null
+  // "Voyage Details - ETD (GMT) (MM/dd/yyyy HH:mm)": null
+  optional google.protobuf.Timestamp etd = 5;
+  
+  // "Voyage Details - ETA FPOC based on speed on ground (GMT) (MM/dd/yyyy HH:mm)": ""
+  optional google.protobuf.Timestamp eta_fpoc_speed_on_ground = 6;
+
+  // "Voyage Details - ETA FPOC based on speed through water (GMT) (MM/dd/yyyy HH:mm)": ""
+  optional google.protobuf.Timestamp eta_fpoc_speed_through_water = 7;
+}
+
+message PIF {
+  // "PIF 1 - Type": "Search and Rescue"
+  optional string type = 1;
+
+  // "PIF 1 - Duration (HH:MM)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement duration = 2;
+
+  // "PIF 1 - Distance (NM)": "2"
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement distance = 3;
+}
+
+message WeatherData {
+  // "Hindcast Weather Data - Latitude": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement latitude = 1;
+  
+  // "Hindcast Weather Data - Longitude": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.StringMeasurement longitude = 2;
+  
+  // "Hindcast Weather Data - Avg Speed GPS (NM/HR)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement avg_speed_gps = 3;
+  
+  // "Hindcast Weather Data - Course Heading": null
+  optional string course_heading = 4;
+  
+  // "Hindcast Weather Data - Wave Height (MTR)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement wave_height = 5;
+  
+  // "Hindcast Weather Data - Wave Period(s)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement wave_period = 6;
+  
+  // "Hindcast Weather Data - Swell Height (MTR)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement swell_height = 7;
+  
+  // "Hindcast Weather Data - Swell Period(s)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement swell_period = 8;
+  
+  // "Hindcast Weather Data - Swell Direction(deg)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement swell_direction = 9;
+  
+  // "Hindcast Weather Data - True Wind Speed (NM/HR)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement true_wind_speed = 10;
+  
+  // "Hindcast Weather Data - True Wind Direction(deg)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement true_wind_direction = 11;
+  
+  // "Hindcast Weather Data - True Current Direction(deg)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement true_current_direction = 12;
+  
+  // "Hindcast Weather Data - True Current speed (NM/HR)": null
+  optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.NumericMeasurement true_current_speed = 13;
+  
+  // "Hindcast Weather Data - Beaufort Scale": null
+  optional string beaufort_scale = 14;
+}

@@ -1,0 +1,89 @@
+// Schema: VoyagePlanWaypoints
+// Business Object: Waypoints, VoyagePlanWaypoints, VoyagePlanWaypointsList, VoyagePlanWaypointsResponse, GeometryType
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Waypoints;
+
+import "google/protobuf/timestamp.proto";
+import "public/Cloud/Shared/Paging.proto";
+
+// ADDED 1.0.0.0
+message Waypoint
+{
+    // ADDED 1.0.0.0
+    optional int32 waypointNumber = 1;
+
+    // ADDED 1.0.0.0
+    optional double latitude = 2;
+
+    // ADDED 1.0.0.0
+    optional double longitude = 3;
+
+    // ADDED 1.0.0.0
+    optional GeometryType geometryType = 4;
+}
+
+// ADDED 1.0.0.0
+message VoyagePlanWaypoints
+{
+    // ADDED 1.0.0.0
+    optional string ccTenantId = 1;
+
+    // ADDED 1.0.0.0
+    optional string partnerName = 2;
+
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp receivedDatetime = 3;
+
+    // ADDED 1.0.0.0
+    optional string voyageId = 4;
+
+    // ADDED 1.0.0.0
+    optional string vesselImo = 5;
+
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp sourceDatetime = 6;
+
+    // ADDED 1.0.0.0
+    repeated Waypoint waypoints = 7;
+
+    // ADDED 1.0.0.0
+    optional string clientTenantId = 8;
+	
+    // ADDED 1.0.0.0
+	optional string originalUrl = 9;
+}
+
+// ADDED 1.0.0.0
+message VoyagePlanWaypointsList
+{
+    // ADDED 1.0.0.0
+    repeated VoyagePlanWaypoints voyagesPlanWaypoints = 1;
+}
+
+// ADDED 1.0.0.0
+message VoyagePlanWaypointsResponse
+{
+    // ADDED 1.0.0.0
+    optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.Paging paging = 1;
+
+    // ADDED 1.0.0.0
+    repeated VoyagePlanWaypoints voyagePlanWaypoints = 2;
+}
+
+// ADDED 1.0.0.0
+message GeometryType
+{
+    // ADDED 1.0.0.0
+    enum Enum
+    {
+        Unknown = 0;
+        Loxodrome = 1;
+        Orthodrome = 2;
+    }
+
+    // ADDED 1.0.0.0
+    optional Enum value = 1;
+}

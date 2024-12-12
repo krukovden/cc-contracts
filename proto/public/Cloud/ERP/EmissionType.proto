@@ -1,0 +1,27 @@
+// Schema: EmissionType
+// Business Object: EmissionType
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+// ADDED 1.0.0.0
+message EmissionType
+{
+    // ADDED 1.0.0.0
+    enum Enum
+    {
+        Unknown = 0;
+        Carbon = 1;
+        CO2 = 2;
+        CH4 = 3;
+        N20 = 4;
+    }
+    
+    // ADDED 1.0.0.0
+    optional Enum value = 1;
+
+    // ADDED 1.0.0.0
+    optional string originalValue = 2;
+}

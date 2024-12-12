@@ -1,0 +1,113 @@
+﻿{
+  "$id": "https://eagle.org/disco-vendor-config.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DiscoVendorConfig",
+  "type": "object",
+  "required": [ "key" ],
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "Adapter vendor name"
+    },
+    "connection": {
+      "type": "object",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "description": "Vendor api link"
+        },
+        "username": {
+          "type": "string",
+          "description": "Vendor api username"
+        },
+        "password": {
+          "description": "Vendor api password",
+          "type": "string"
+        }
+      }
+    },
+    "discoDataTypeToVendorSensorAliasMapping": {
+      "type": "object",
+      "properties": {
+        "draftDataTypeToVendorSensorAliasMapping": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/discoDataTypeToVendorSensorAlias"
+          }
+        },
+        "fuelDataTypeToVendorSensorAliasMapping": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/discoDataTypeToVendorSensorAlias"
+          }
+        },
+        "locationDataTypeToVendorSensorAliasMapping": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/discoDataTypeToVendorSensorAlias"
+          }
+        },
+        "weatherDataTypeToVendorSensorAliasMapping": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/discoDataTypeToVendorSensorAlias"
+          }
+        },
+        "navigationDataTypeToVendorSensorAliasMapping": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/discoDataTypeToVendorSensorAlias"
+          }
+        },
+        "engineDataTypeToVendorSensorAliasMapping": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/discoDataTypeToVendorSensorAlias"
+          }
+        }
+      }
+    },
+    "discoDataTypeUnitToVendorSensorUnitMapping": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/discoDataTypeUnitToVendorSensorUnit"
+      }
+    },
+    "maxResponseDataPoints": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "$defs": {
+    "discoDataTypeToVendorSensorAlias": {
+      "title": "DiscoDataTypeToVendorSensorAlias",
+      "type": "object",
+      "required": [ "discoDataType" ],
+      "properties": {
+        "discoDataType": {
+          "type": "string",
+          "description": "Disco data type name"
+        },
+        "vendorSensorAlias": {
+          "type": "string",
+          "description": "Vendor sensor alias"
+        }
+      }
+    },
+    "discoDataTypeUnitToVendorSensorUnit": {
+      "title": "DiscoDataTypeUnitToVendorSensorUnit",
+      "type": "object",
+      "required": [ "discoDataTypeUnit", "vendorSensorUnit" ],
+      "properties": {
+        "discoDataTypeUnit": {
+          "type": "string",
+          "description": "Disco data type unit"
+        },
+        "vendorSensorUnit": {
+          "type": "string",
+          "description": "Vendor sensor unit"
+        }
+      }
+    }
+  }
+}

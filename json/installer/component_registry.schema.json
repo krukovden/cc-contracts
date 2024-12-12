@@ -1,0 +1,135 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "default": {},
+  "title": "InstallerComponentRegistryConfig",
+  "required": [
+    "location",
+    "components"
+  ],
+  "properties": {
+    "location": {
+      "type": "string",
+      "default": "",
+      "title": "Location to save components to"
+    },
+    "components": {
+      "type": "array",
+      "default": [],
+      "title": "The components to process",
+      "items": {
+        "$ref": "#/$defs/installerComponent"
+      }
+    }
+  },
+  "$defs": {
+    "installerComponent": {
+      "type": "object",
+      "title": "Component",
+      "required": [
+        "name",
+        "files",
+        "actions"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": "",
+          "title": "Name of the components"
+        },
+        "files": {
+          "type": "array",
+          "default": [],
+          "title": "Files for the component",
+          "items": {
+            "type": "object",
+            "default": {},
+            "title": "ComponentFile",
+            "required": [
+              "source",
+              "destination"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "default": "none",
+                "enum": [
+                  "none",
+                  "container",
+                  "file",
+                  "release"
+                ]
+              },
+              "source": {
+                "type": "string",
+                "default": "",
+                "title": "Source for the file"
+              },
+              "destination": {
+                "type": "string",
+                "default": "",
+                "title": "Destination for the file"
+              }
+            }
+          }
+        },
+        "actions": {
+          "type": "array",
+          "default": [],
+          "title": "ComponentAction",
+          "items": {
+            "type": "object",
+            "default": {},
+            "title": "ComponentAction",
+            "required": [
+              "source",
+              "action"
+            ],
+            "properties": {
+              "source": {
+                "type": "string",
+                "default": "",
+                "title": "Source for the action"
+              },
+              "destination": {
+                "type": "string",
+                "default": "",
+                "title": "Destination for the action"
+              },
+              "action": {
+                "type": "string",
+                "default": "none",
+                "enum": [
+                  "none",
+                  "copy",
+                  "install",
+                  "execute",
+                  "executeImmediate",
+                  "updatePath",
+                  "replaceParameters",
+                  "chunk",
+                  "unchunk",
+                  "compress",
+                  "uncompress",
+                  "systemRestore",
+                  "runDockerCompose",
+                  "postDrexInstall",
+                  "postVectorInstall",
+                  "postRabbitMqInstall",
+                  "postInstall",
+                  "postDiscoInstall",
+                  "postSiemensInstall",
+                  "postKdiInstall",
+                  "validateJson",
+                  "postVMReportInstall",
+                  "postDrexCentralInstall",
+                  "postMessageSchedulerInstall"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

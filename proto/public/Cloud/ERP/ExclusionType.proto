@@ -1,0 +1,34 @@
+// Schema: ExclusionType
+// Business Object: ExclusionType
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+
+// ADDED 1.0.0.0
+message ExclusionType
+{
+    // ADDED 1.0.0.0
+    enum Enum
+    {
+        Unknown = 0;
+        VoyageEndangeredSafeNavigation = 1;
+        VoyageIceConditions = 2;
+        AFTankerShuttleTanker = 3;
+        AFTankerSTS = 4;
+        ElectricalReefer = 5;
+        ElectricalCooling = 6;
+        ElectricalDischarge = 7;
+        BoilerCargoHeating = 8;
+        BoilerCargoPumps = 9;
+        OtherCargoPumpsPowerPack = 10;
+    }
+    
+    // ADDED 1.0.0.0
+    optional Enum value = 1;
+
+    // ADDED 1.0.0.0
+    optional string originalValue = 2;
+}

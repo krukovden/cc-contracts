@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Schedules;
+import "public/Error.proto";
+
+message DiscoGetSchedulesResponse
+{
+  optional string requestId = 1; // Client-generated, for internal tracking purposes
+  repeated string scheduleIds = 2; // List of existing schedules
+  optional Abs.CommonCore.Contracts.Proto.Error error = 3;
+}

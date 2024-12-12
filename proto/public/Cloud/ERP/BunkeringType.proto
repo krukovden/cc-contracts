@@ -1,0 +1,28 @@
+// Schema: BunkeringType
+// Business Object: BunkeringType
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+
+// ADDED 1.0.0.0
+message BunkeringType
+{
+    // ADDED 1.0.0.0
+    enum Enum
+    {
+        Unknown = 0;
+        Normal = 1;
+        CorrectionOther = 2;
+        CorrectionStart = 3;
+        CorrectionEnd = 4;
+    }
+    
+    // ADDED 1.0.0.0
+    optional Enum value = 1;
+
+    // ADDED 1.0.0.0
+    optional string originalValue = 2;
+}

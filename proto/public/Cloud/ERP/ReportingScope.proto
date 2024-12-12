@@ -1,0 +1,27 @@
+// Schema: ReportingScope
+// Business Object: ReportingScope
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+
+// ADDED 1.0.0.0
+message ReportingScope
+{
+    // ADDED 1.0.0.0
+    enum Enum
+    {
+        Unknown = 0;
+        IMODCS = 1;
+        EUMRV = 2;
+        UKMRV = 3;
+    }
+    
+    // ADDED 1.0.0.0
+    optional Enum value = 1;
+
+    // ADDED 1.0.0.0
+    optional string originalValue = 2;
+}

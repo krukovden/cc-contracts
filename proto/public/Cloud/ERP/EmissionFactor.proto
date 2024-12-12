@@ -1,0 +1,19 @@
+// Schema: EmissionFactor
+// Business Object: EmissionFactor
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Cloud/ERP/EmissionType.proto";
+
+// ADDED 1.0.0.0
+message EmissionFactor
+{
+  // ADDED 1.0.0.0
+  optional EmissionType type = 1;
+
+  // ADDED 1.0.0.0
+  optional double factor = 2;
+}

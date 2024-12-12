@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package abs.cc.drex.vessel.config;
+option csharp_namespace = "Abs.Cc.Drex.Vessel.Config";
+option java_package = "com.abs.cc.drex.vessel.config";
+
+import "google/protobuf/timestamp.proto";
+
+message VesselAdapterConfig
+{
+    optional string Name = 1;
+    optional string Ver  = 2;
+}
+
+message VesselAdapterEntry
+{
+    optional google.protobuf.Timestamp Timestamp = 1;
+    optional VesselAdapterConfig       Adapter   = 2;
+}

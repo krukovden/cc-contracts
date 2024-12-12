@@ -1,0 +1,132 @@
+// Schema: VesonPortResponse
+// Business Object: VesonPortResponse, UneceCountry, UneceLocation, UneceSubdivision, UneceStatus, UneceFunction, UnecePort, UnecePortResponse
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Port;
+
+import "google/protobuf/timestamp.proto";
+import "public/Cloud/Shared/Paging.proto";
+
+// ADDED 1.0.0.0
+message VesonPortResponse
+{
+	// ADDED 1.0.0.0
+	optional string veson_tenant = 1;
+	
+	// ADDED 1.0.0.0
+	optional string veson_port_id = 2;
+	
+	// ADDED 1.0.0.0
+	optional string name = 3;
+	
+	// ADDED 1.0.0.0
+	optional string country = 4;
+	
+	// ADDED 1.0.0.0
+	optional string uncode = 5;
+	
+	// ADDED 1.0.0.0
+	optional float latitude = 6;
+	
+	// ADDED 1.0.0.0
+	optional float longitude = 7;
+}
+
+// ADDED 1.0.0.0
+message UneceCountry
+{
+	// ADDED 1.0.0.0
+	optional string name = 1;
+
+	// ADDED 1.0.0.0
+	optional string code = 2;	
+}
+
+// ADDED 1.0.0.0
+message UneceLocation
+{
+	// ADDED 1.0.0.0
+	optional string code = 1;
+	
+	// ADDED 1.0.0.0
+	optional string longitude = 2;
+	
+	// ADDED 1.0.0.0
+	optional string latitude = 3;	
+}
+
+// ADDED 1.0.0.0
+message UneceSubdivision
+{
+	// ADDED 1.0.0.0
+	optional string name = 1;
+
+	// ADDED 1.0.0.0
+	optional string code = 2;	
+}
+
+// ADDED 1.0.0.0
+message UneceStatus
+{
+	// ADDED 1.0.0.0
+	optional string code = 1;
+
+	// ADDED 1.0.0.0
+	optional string description = 2;	
+}
+
+// ADDED 1.0.0.0
+message UneceFunction
+{
+	// ADDED 1.0.0.0
+	optional string code = 1;
+	
+	// ADDED 1.0.0.0
+	optional string description = 2;	
+}
+
+// ADDED 1.0.0.0
+message UnecePort
+{
+	// ADDED 1.0.0.0
+	optional UneceCountry country = 1;	
+	
+	// ADDED 1.0.0.0
+	optional UneceLocation location = 2;
+	
+	// ADDED 1.0.0.0
+	optional string name = 3;
+	
+	// ADDED 1.0.0.0
+	optional string nameWoDia = 4;
+	
+	// ADDED 1.0.0.0
+	optional UneceSubdivision subdivision = 5;	
+	
+	// ADDED 1.0.0.0
+	optional UneceStatus status = 6;
+	
+	// ADDED 1.0.0.0
+	repeated UneceFunction functions = 7;
+	
+	// ADDED 1.0.0.0
+	optional string lastChangeDate = 8;
+	
+	// ADDED 1.0.0.0
+	optional string iata = 9;
+
+	// ADDED 1.0.0.0
+	optional string locode = 10;
+}
+
+// ADDED 1.0.0.0
+message UnecePortResponse
+{
+	// ADDED 1.0.0.0
+    optional Abs.CommonCore.Contracts.Proto.Cloud.Shared.Paging paging = 1;	
+	
+	// ADDED 1.0.0.0
+	repeated UnecePort ports = 2;
+}

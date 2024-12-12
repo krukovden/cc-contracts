@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Waypoints.Ecdis;
+
+import "google/protobuf/timestamp.proto";
+
+message PersistRawWaypoints
+{
+    optional string url = 1;
+    optional google.protobuf.Timestamp creationTime = 2;
+    optional string ccTenantId = 3;
+    optional string partnerName = 4;
+}

@@ -1,0 +1,22 @@
+// Schema: GetValidationResultResponse
+// Business Object: GetValidationResultResponse
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Cloud/ERP/VoyageValidationResult.proto";
+
+// ADDED 1.0.0.0
+message GetValidationResultResponse
+{
+  // ADDED 1.0.0.0
+  optional int32 reportId = 1;
+
+  // ADDED 1.0.0.0
+  optional int32 reportYear = 2;
+
+  // ADDED 1.0.0.0
+  repeated VoyageValidationResult validationResults = 3;
+}

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Data.Weather;
+
+enum WeatherDataType
+{
+  Unknown = 0;
+  WetTemperature = 1;
+  DryTemperature = 2;
+  RelativeWindDirection = 3;
+  RelativeWindSpeed = 4;
+  TrueWindDirection = 5;
+  SeaWaterTemperature = 6;
+  SeaWaterDepth = 7;
+  AirPressure = 8;
+  RelativeHumidity = 9;
+  Swell = 10;
+  SeaScale = 11;
+  TrueWindSpeed = 12;
+}
+
+message WeatherDataTypeCollection
+{
+  repeated WeatherDataType dataType = 1; // Empty interpreted as "all"
+}

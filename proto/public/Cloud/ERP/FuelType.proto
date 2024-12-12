@@ -1,0 +1,40 @@
+// Schema: FuelType
+// Business Object: FuelType
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+
+// ADDED 1.0.0.0
+message FuelType
+{
+    // ADDED 1.0.0.0
+    enum Enum
+    {
+        Other = 0;
+        // Marine disel oil
+        MDO = 1;
+        // Marine gas oil
+        MGO = 2;
+        // Heavy fuel oil
+        HFO = 3;
+        // Light fuel oil
+        LFO = 4;
+        // Liquefied natural gas
+        LNG = 5;
+        // Liquefied petroleum gas - Propane
+        LPGP = 6;
+        // Liquefied petroleum gas - Butane
+        LPGB = 7;
+        Methanol = 8;
+        Ethanol = 9;
+    }
+    
+    // ADDED 1.0.0.0
+    optional Enum value = 1;
+
+    // ADDED 1.0.0.0
+    optional string originalValue = 2;
+}

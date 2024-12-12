@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Scheduler;
+
+import "google/protobuf/timestamp.proto";
+import "public/Error.proto";
+
+message ScheduleResponse
+{
+  optional string scheduleId = 1;
+  optional google.protobuf.Timestamp executed = 2;
+  optional Abs.CommonCore.Contracts.Proto.Error error = 3;
+}

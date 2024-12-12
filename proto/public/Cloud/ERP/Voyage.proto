@@ -1,0 +1,57 @@
+// Schema: Voyage
+// Business Object: Voyage
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Cloud/ERP/ReportingScope.proto";
+import "public/Cloud/ERP/FuelMeasurement.proto";
+import "google/protobuf/timestamp.proto";
+import "public/Cloud/ERP/EventType.proto";
+import "public/Cloud/ERP/VesselStatus.proto";
+import "public/Cloud/ERP/VesselStatusMeasurement.proto";
+import "public/Cloud/ERP/CargoMeasurement.proto";
+import "public/Cloud/ERP/Exclusion.proto";
+import "public/Cloud/ERP/ValidationResult.proto";
+
+// ADDED 1.0.0.0
+message Voyage
+{
+  // ADDED 1.0.0.0
+  optional ReportingScope reportingScope = 1;
+
+  // ADDED 1.0.0.0
+  optional bool isCo2MeasurementDirect = 2;
+
+  // ADDED 1.0.0.0
+  optional google.protobuf.Timestamp timestamp = 3;
+
+  // ADDED 1.0.0.0
+  optional string portCode = 4;
+
+  // ADDED 1.0.0.0
+  optional EventType eventType = 5;
+
+  // ADDED 1.0.0.0
+  optional VesselStatus vesselStatus = 6;
+
+  // ADDED 1.0.0.0
+  repeated VesselStatusMeasurement distance = 7;
+
+  // ADDED 1.0.0.0
+  repeated CargoMeasurement cargo = 8;
+
+  // ADDED 1.0.0.0
+  repeated VesselStatusMeasurement duration = 9;
+
+  // ADDED 1.0.0.0
+  repeated FuelMeasurement consumption = 10;
+
+  // ADDED 1.0.0.0
+  repeated FuelMeasurement remainingOnBoard = 11;
+
+  // ADDED 1.0.0.0
+  repeated Exclusion exclusions = 12;
+}

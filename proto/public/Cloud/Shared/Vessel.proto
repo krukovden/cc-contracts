@@ -1,0 +1,31 @@
+// Schema: Vessel
+// Business Object: Vessel
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Shared;
+
+import "google/protobuf/timestamp.proto";
+
+// ADDED 1.0.0.0
+message Vessel
+{
+    // ADDED 1.0.0.0
+    optional string imo = 1;
+    
+    // ADDED 1.0.0.0
+    optional string type = 2;
+    
+    // ADDED 1.0.0.0
+    optional string name = 3;
+    
+    // ADDED 1.0.0.0
+    optional int64 deadweight = 4;
+
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp createdDateTime = 5;
+
+    // ADDED 1.0.0.0
+    optional google.protobuf.Timestamp updatedDateTime = 6;
+}

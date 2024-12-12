@@ -1,0 +1,32 @@
+// Schema: Exclusion
+// Business Object: Exclusion
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Cloud/ERP/ExclusionType.proto";
+import "public/Cloud/ERP/FuelType.proto";
+
+// ADDED 1.0.0.0
+message Exclusion
+{
+  // ADDED 1.0.0.0
+  optional ExclusionType type = 1;
+
+  // ADDED 1.0.0.0
+  optional FuelType fuelType = 2;
+
+  // ADDED 1.0.0.0
+  optional double consumption = 3;
+
+  // ADDED 1.0.0.0
+  optional double sfoc = 4;
+
+  // ADDED 1.0.0.0
+  optional double kWh = 5;
+
+  // ADDED 1.0.0.0
+  optional double distance = 6;
+}

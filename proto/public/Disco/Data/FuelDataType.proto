@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Data.Fuel;
+
+enum FuelDataType
+{
+  Unknown = 0;
+  TankLevel_HeavyFuelOil = 1;
+  TankLevel_MarineDieselOil = 2;
+  TankLevel_LightFuelOil = 3;
+  TankLevel_LiquefiedNaturalGas = 4;
+  TankLevel_Ethanol = 5;
+  TankLevel_Methanol = 6;
+  TankLevel_Propane = 7;
+  TankLevel_Butane = 8;
+}
+
+message FuelDataTypeCollection
+{
+  repeated FuelDataType dataType = 1; // Empty interpreted as "all"
+}

@@ -1,0 +1,27 @@
+// Schema: BunkerDeliveryNote
+// Business Object: BunkerDeliveryNote
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Cloud/ERP/BunkeringType.proto";
+import "public/Cloud/ERP/FuelMeasurement.proto";
+import "google/protobuf/timestamp.proto";
+
+// ADDED 1.0.0.0
+message BunkerDeliveryNote
+{
+  // ADDED 1.0.0.0
+  optional google.protobuf.Timestamp timestamp = 1;
+
+  // ADDED 1.0.0.0
+  optional BunkeringType type = 2;
+
+  // ADDED 1.0.0.0
+  optional string description = 3;
+
+  // ADDED 1.0.0.0
+  repeated FuelMeasurement measurements = 4;
+}

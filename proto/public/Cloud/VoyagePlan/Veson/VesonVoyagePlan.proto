@@ -1,0 +1,105 @@
+// Schema: VesonVoyagePlan
+// Business Object: VesonVoyagePlan, VesonVoyagePlanItinerary, VesonVoyagePlanCargoHandling, PrevVoyagePlanItinerary, VesonVoyagePlanTenantRequest, VesonSpecificData, VesonItinerary, VesonVoyagePlanTenantRequest, VesonVoyagePlanTenantResponse
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.VoyagePlan.Veson;
+
+// ADDED 1.0.0.0
+message VesonSpecificData
+{
+    // ADDED 1.0.0.0
+    optional string vesselCode = 1;
+    
+    // ADDED 1.0.0.0
+    optional string oprType = 2;
+    
+    // ADDED 1.0.0.0
+    optional int64 internalSqlId = 3;
+    
+    // ADDED 1.0.0.0
+    optional bool cancel = 4;
+    
+    // ADDED 1.0.0.0
+    optional bool forecast = 5;
+    
+    // ADDED 1.0.0.0
+    optional bool legalHold = 6;
+    
+    // ADDED 1.0.0.0
+    optional bool claimPending = 7;
+    
+    // ADDED 1.0.0.0
+    optional string vesselType = 8;
+    
+    // ADDED 1.0.0.0
+    repeated Abs.CommonCore.Contracts.Proto.Cloud.VoyagePlan.Veson.VesonItinerary itineraries = 9;
+}
+
+// ADDED 1.0.0.0
+message VesonItinerary
+{
+    // ADDED 1.0.0.0
+    optional string arrDepStatus = 1;
+    
+    // ADDED 1.0.0.0
+    optional string departureLocalDatetime = 2;
+    
+    // ADDED 1.0.0.0
+    optional string arrivalLocalDatetime = 3;
+    
+    // ADDED 1.0.0.0
+    optional int64 order = 4;
+    
+    // ADDED 1.0.0.0
+    repeated VesonVoyagePlanCargoHandling cargoHandlings = 5;
+    
+    // ADDED 1.0.0.0
+    optional PrevVoyagePlanItinerary previousItinerary = 6;
+}
+
+// ADDED 1.0.0.0
+message VesonVoyagePlanCargoHandling
+{
+    // ADDED 1.0.0.0
+    optional int64 blQuantity = 1;
+    
+    // ADDED 1.0.0.0
+    optional int64 cargoId = 2;
+    
+    // ADDED 1.0.0.0
+    optional string cargoShortName = 3;
+    
+    // ADDED 1.0.0.0
+    optional string laycanFromLocalDatetime = 4;
+    
+    // ADDED 1.0.0.0
+    optional string laycanToLocalDatetime = 5;
+    
+    // ADDED 1.0.0.0
+    optional string terms = 6;
+}
+
+// ADDED 1.0.0.0
+message PrevVoyagePlanItinerary
+{
+    // ADDED 1.0.0.0
+    optional int64 order = 1;
+    
+    // ADDED 1.0.0.0
+    optional int64 seq = 2;
+    
+    // ADDED 1.0.0.0
+    optional string ballastLadenFromPort = 3;
+}
+
+// ADDED 1.0.0.0
+message VesonVoyagePlanTenantRequest 
+{
+    // ADDED 1.0.0.0
+    optional string tenant = 1;
+
+    // ADDED 1.0.0.0
+    optional string token = 2;    
+}

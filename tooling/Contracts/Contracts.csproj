@@ -1,0 +1,131 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Abs.CommonCore.Contracts</RootNamespace>
+    <AssemblyName>Abs.CommonCore.Contracts</AssemblyName>
+    <NoProjectBuildInPackageWelcome>false</NoProjectBuildInPackageWelcome>
+    <ProjectBuildInPackageVerbosity>detailed</ProjectBuildInPackageVerbosity>
+
+    <PackageId>Abs.CommonCore.Contracts</PackageId>
+    <Version></Version>
+    <!-- This empty version tag is filled in by the GitHub Actions workflow before publishing the package -->
+    <Authors>ABS Wavesight</Authors>
+    <PackageDescription>Contract models for integrating with ABS Common Core services including D-REX, DISCO</PackageDescription>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Macross.Json.Extensions" Version="3.0.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.26.1" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.62.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.62.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Teronis.MSBuild.Packaging.ProjectBuildInPackage" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+  </ItemGroup>
+
+  <Target Name="GenerateJsonContractModels" BeforeTargets="BeforeCompile">
+    <ItemGroup>
+      <Compile Include="Generated\*.cs" KeepDuplicates="false" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="powershell -NoProfile -ExecutionPolicy RemoteSigned -Command &quot;&amp; { cd $(ProjectDir); dotnet format --severity info; powershell -ExecutionPolicy Bypass -NoProfile -NonInteractive -File $(ProjectDir)generate-proto.ps1; powershell -ExecutionPolicy Bypass -NoProfile -NonInteractive -File $(ProjectDir)generate-json.ps1; }&quot;&#xD;&#xA;" />
+  </Target>
+  <ItemGroup Label="Protobuf">
+		<Protobuf Include="Protobuf\public\Error.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\internal\Drex\CentralHistoryConfig.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\internal\Drex\VesselHistoryConfig.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\internal\Reference\Reference.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Destination.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Drex\CcDrexCentralConfig.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Drex\CcDrexVesselConfig.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Drex\ConfigError.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Drex\FileShipping.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\OnboardingTool\SyncTenantRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\OnboardingTool\VesselCatalogUpdateData.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\OnboardingTool\VesselDataAction.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\OnboardingTool\VesselDataProcessing.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Scheduler\CreateScheduleRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Scheduler\DeleteScheduleRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Scheduler\ScheduleRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Scheduler\ScheduleResponse.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Shared\Application.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Tenant\CustomPort.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Tenant\Tenant.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\BunkerDeliveryNote.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\BunkeringType.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\CargoMeasurement.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\CargoUnit.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\DateRange.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\EmissionFactor.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\EmissionType.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\ErpImportReportRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\EventType.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\Exclusion.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\ExclusionType.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\FuelMeasurement.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\FuelType.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\GetReportSOFRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\GetReportSOFResponse.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\GetValidationResultRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\GetValidationResultResponse.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\GetVoyagesDetails.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\GetVoyagesRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\GetVoyagesResponse.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\ImportReportRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\ImportReportResponse.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\OtherFuel.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\ReportingScope.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\UpdateReportRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\UpdateReportResponse.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\ValidationResult.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\VesselStatus.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\VesselStatusMeasurement.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\Voyage.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\ERP\VoyageValidationResult.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\Port\Port.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\Shared\Measurement.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\Shared\Paging.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\Shared\Vessel.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\VoyageManager\RegistrationRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\VoyageManager\Registry.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\VoyageManager\UnregistrationRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\VoyageManager\VesselReport.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\VoyagePlan\VoyagePlan.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\VoyagePlan\VoyagePlanResponse.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\Waypoints\VoyagePlanWaypoints.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Data\DataPoint.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Data\DiscoDataRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Data\DiscoDataResponse.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Data\DraftDataType.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Data\EngineDataType.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Data\FuelDataType.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Data\LocationDataType.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Data\NavigationDataType.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Data\OnDemandRange.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Data\OnDemandSingle.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Data\WeatherDataType.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Schedules\DiscoCreateScheduleRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Schedules\DiscoDeleteScheduleRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Schedules\DiscoGetSchedulesRequest.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Schedules\DiscoGetSchedulesResponse.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Schedules\DiscoScheduleResponse.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Schedules\ScheduleRange.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Disco\Schedules\ScheduleSingle.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\internal\Cloud\Waypoints\ECDIS\AuditRecord.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\internal\Cloud\Waypoints\ECDIS\PersistRawWaypoints.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\internal\Cloud\Waypoints\ECDIS\WaypointsBlobReceived.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\VoyagePlan\Veson\VesonVoyagePlan.proto" AdditionalImportDirs="Protobuf" />
+		<Protobuf Include="Protobuf\public\Cloud\Waypoints\ECDIS\WaypointsFileStatus.proto" AdditionalImportDirs="Protobuf" />
+	</ItemGroup>
+</Project>

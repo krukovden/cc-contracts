@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Reference;
+
+import "google/protobuf/timestamp.proto";
+
+message Client
+{    
+    optional string id = 1;
+    optional string name = 2;
+    optional google.protobuf.Timestamp createdDateTime = 3;
+    optional google.protobuf.Timestamp updatedDateTime = 4;
+
+    // Microsoft Entra application ID, used to identify the client from the JWT authentication token claims
+    optional string entraApplicationId = 5;
+}
+
+message Partner
+{
+    optional string id = 1;
+    optional string name = 2;
+    optional google.protobuf.Timestamp createdDateTime = 3;
+    optional google.protobuf.Timestamp updatedDateTime = 4;
+}
+
+message Dataset
+{
+    optional string id = 1;
+    optional string name = 2;
+    optional google.protobuf.Timestamp createdDateTime = 3;
+    optional google.protobuf.Timestamp updatedDateTime = 4;
+}
+
+message AllReferenceData
+{
+    repeated Client clients = 1;
+    repeated Partner partners = 2;
+    repeated Dataset datasets = 3;
+}

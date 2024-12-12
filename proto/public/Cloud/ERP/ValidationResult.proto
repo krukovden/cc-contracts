@@ -1,0 +1,32 @@
+// Schema: ValidationResult
+// Business Object: ValidationResult
+// Version: 1.0.0.0
+
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Cloud.Erp;
+
+import "public/Error.proto";
+
+// ADDED 1.0.0.0
+message ValidationResult
+{
+  // ADDED 1.0.0.0
+  optional int32 voyageId = 1;
+
+  // ADDED 1.0.0.0
+  optional bool hasError = 2;
+
+  // ADDED 1.0.0.0
+  optional bool isGeneralError = 3;
+
+  // ADDED 1.0.0.0
+  optional bool hasWarning = 4;
+
+  // ADDED 1.0.0.0
+  repeated Error errorMessages = 5;
+
+  // ADDED 1.0.0.0
+  optional Error generalErrorMessage = 6;
+
+}

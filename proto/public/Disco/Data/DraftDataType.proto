@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Data.Draft;
+
+enum DraftDataType
+{
+  Unknown = 0;
+  MeanDraft = 1;
+  AftDraft = 2;
+  ForwardDraft = 3;
+  MidshipDraftPort = 4;
+  MidshipDraftStarboard = 5;
+  Trim = 6;
+}
+
+message DraftDataTypeCollection
+{
+  repeated DraftDataType dataType = 1; // Empty interpreted as "all"
+}

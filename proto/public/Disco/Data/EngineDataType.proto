@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package Abs.CommonCore.Contracts.Proto.Disco.Data.Engine;
+
+enum EngineDataType
+{
+  Unknown = 0;
+  EnginePower  = 1;
+  EngineFOC = 2;
+}
+
+message EngineDataTypeCollection
+{
+  repeated EngineDataType dataType = 1; // Empty interpreted as "all"
+}
