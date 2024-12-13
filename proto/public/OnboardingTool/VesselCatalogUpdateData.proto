@@ -29,3 +29,23 @@ message VesselCatalogUpdateData {
     // ADDED 1.0.0.0,
 	optional string GroupingName = 5;
 }
+
+// ADDED 1.0.0.0
+message VesselCatalogUpdateDatasetItem {
+    // ADDED 1.0.0.0
+    optional GroupingType GroupingType = 1;
+    // ADDED 1.0.0.0
+    optional int32 GroupingOrder = 2;
+    // ADDED 1.0.0.0,
+    optional string GroupingDescription = 3;
+    // ADDED 1.0.0.0,
+	optional string GroupingCategoryName = 4;
+    // ADDED 1.0.0.0,
+	repeated string GroupingNames = 5;
+}
+
+// ADDED 1.0.0.0
+message VesselCatalogUpdateDataset {
+    // ADDED 1.0.0.0
+    repeated VesselCatalogUpdateDatasetItem Items = 1;
+}

@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/obj
+/tooling/.vs/Contracts
+/bin/Debug/netstandard2.1
+/tooling/Contracts/bin/Debug/net7.0
+/tooling/Contracts/obj
+/tooling/Contracts/Generated
+/tooling/Contracts/Protobuf/internal
+/tooling/Contracts/Protobuf/public
+/tooling/ModelGenerator
+/tooling/ModelGenerator.Tests
